@@ -1,0 +1,239 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-image {
+    background-image: url("../img/landing_page_headerBg.jpg");
+    height: 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0 24px;          
+    border-radius: 16px;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo {
+    background-image: url("../img/mercarre logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    width: 86.63px;   
+    height: 87px;   
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: 1.6rem;
+}
+
+/* Center Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2E7D32;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background-color: #2E7D32;
+    transition: width 0.2s ease;
+}
+
+/* Right Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 9px 20px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #2E7D32;
+    border: 2px solid #2E7D32;
+}
+
+.btn-outline:hover {
+    background: #2E7D32;
+    border: 2px solid #2E7D32;
+    color: #fff;
+}
+
+.btn-primary {
+    background: #2E7D32;
+    color: #fff;
+    border: 2px solid #2E7D32;
+}
+
+.btn-primary:hover {
+    background: #1B5E20;
+    border-color: #1B5E20;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.caret {
+    font-size: 0.7rem;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: #fff;
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+    min-width: 200px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: all 0.2s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    transition: background 0.15s ease;
+}
+
+.dropdown-menu li a:hover {
+    background: #F1F8E9;
+    color: #2E7D32;
+}
+
+/* Mobile Hamburger */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #2E7D32;
+    border-radius: 2px;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.mobile-menu li a {
+    display: block;
+    padding: 14px 24px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.mobile-menu li a:hover {
+    background: #F1F8E9;
+    color: #2E7D32;
+}
+
+.mobile-divider {
+    height: 1px;
+    background: #eee;
+    margin: 6px 0;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+}
