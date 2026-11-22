@@ -6,7 +6,7 @@ body, html {
 
 .hero-image {
     background-image: url("../img/landing_page_headerBg.jpg");
-    height: 700px;
+    height: 600px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -236,4 +236,73 @@ body, html {
     .nav-toggle {
         display: flex;
     }
+}
+/* ===== HERO SEARCH ===== */
+.hero-search {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px;
+    padding: 0 24px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    padding-left: 18px;      /* space before the icon */
+}
+
+/* Magnifying glass on the left */
+.search-icon {
+    font-size: 1.1rem;
+    color: #2E7D32;
+    line-height: 1;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 12px 14px 25px;   
+    font-size: 1rem;
+    color: #333;
+    background: transparent;
+    font-family: inherit;
+    min-width: 0;                    
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+/* Search button on the right */
+.search-btn {
+    background: #2E7D32;
+    color: #fff;
+    border: none;
+    padding: 0 24px;
+    height: 48px;
+    min-height: 48px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    transition: background 0.2s ease;
+    border-radius: 999px;            /* pill button inside the pill bar */
+    margin: 4px;                     /* small inset so it nests inside */
+    flex-shrink: 0;
+}
+
+.search-btn:hover {
+    background: #1B5E20;
 }

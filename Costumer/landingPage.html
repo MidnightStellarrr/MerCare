@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to MerCare</title>
     <link rel="stylesheet" href="css/landingPage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
 </head>
 <body>
         <nav class="navbar">
@@ -59,6 +60,19 @@
             </ul>
         </nav>
 
-    <div class="hero-image"></div>
+    <div class="hero-image">
+        <div class="hero-search">
+            <form class="search-form" action="search.html" method="get">
+                <i class="bi bi-search search-icon"></i>
+                <input 
+                    type="text" 
+                    name="q" 
+                    class="search-input" 
+                    placeholder="Search for medicines, pharmacies..."
+                    aria-label="Search">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
