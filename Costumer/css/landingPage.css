@@ -556,3 +556,184 @@ body, html {
         max-width: 400px;
     }
 }
+
+/* ===== BROWSE CATEGORIES SECTION ===== */
+.browse-categories {
+    padding: 60px 24px;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.categories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.categories-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4CAF50;
+    margin: 0;
+}
+
+.view-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.view-all:hover {
+    color: #2E7D32;
+}
+
+.view-all i {
+    font-size: 20px;
+}
+
+/* Grid Layout */
+.categories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr; /* Middle column is slightly wider */
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 550px; /* Fixed height for the grid */
+}
+
+/* Individual Cards */
+.category-card {
+    position: relative;
+    background-color: #f4f4f4;
+    border-radius: 24px;
+    padding: 30px;
+    text-decoration: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(109, 230, 64, 0.10); /* Slight gray/black overlay (15% opacity) */
+    z-index: 2; /* Sits above the image, but below the text */
+    pointer-events: none; /* Allows clicks to pass through to the card link */
+    transition: background-color 0.3s ease;
+}
+
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+/* Grid Placement */
+.card-medicines {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; /* Spans both rows */
+}
+
+.card-vitamins {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2; /* Top middle */
+}
+
+.card-firstaid {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3; /* Bottom middle */
+}
+
+.card-baby {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3; /* Spans both rows */
+}
+
+/* Card Content (Text & Button) */
+.card-content {
+    position: relative;
+    z-index: 3; /* Keeps text above images */
+}
+
+.card-vitamins .card-content,
+.card-firstaid .card-content {
+    text-align: right;        /* Aligns the text and button to the right */
+    width: 100%;              /* Ensures the container takes up the full card width */
+    display: flex;            /* Using flex helps perfectly align the button too */
+    flex-direction: column;
+    align-items: flex-end;    /* Pushes the flex items (button) to the right edge */
+}
+
+.category-card h3 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #6de640; /* Bright green from your reference */
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+}
+
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #6de640;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.category-card:hover .explore-btn {
+    background-color: #5ce034;
+}
+
+/* Card Images */
+.card-img {
+    position: absolute;
+    inset: 0;                /* top/right/bottom/left: 0 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* fills the card, crops overflow */
+    object-position: center bottom;  /* keeps the bottom of the image visible */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .categories-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .card-medicines, .card-vitamins, .card-firstaid, .card-baby {
+        grid-column: auto;
+        grid-row: auto;
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .categories-header h2 {
+        font-size: 24px;
+    }
+}
