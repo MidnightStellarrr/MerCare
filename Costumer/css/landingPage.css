@@ -559,7 +559,7 @@ body, html {
 
 /* ===== BROWSE CATEGORIES SECTION ===== */
 .browse-categories {
-    padding: 60px 24px;
+    padding: 30px 24px;
     background-color: #fff;
     max-width: 1200px;
     margin: 0 auto;
@@ -569,13 +569,13 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .categories-header h2 {
     font-size: 32px;
     font-weight: 700;
-    color: #4CAF50;
+    color: #2E7D32; /* Dark green matching the text in the image */
     margin: 0;
 }
 
@@ -584,133 +584,81 @@ body, html {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #4CAF50;
+    color: #2E7D32;
     font-weight: 600;
     font-size: 16px;
     transition: color 0.2s;
 }
 
 .view-all:hover {
-    color: #2E7D32;
+    color: #1B5E20;
 }
 
 .view-all i {
     font-size: 20px;
 }
 
-/* Grid Layout */
+/* Grid Layout (3 Columns) */
 .categories-grid {
     display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr; /* Middle column is slightly wider */
-    grid-template-rows: 1fr 1fr;
-    gap: 24px;
-    height: 550px; /* Fixed height for the grid */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Space between cards */
 }
 
 /* Individual Cards */
 .category-card {
     position: relative;
-    background-color: #f4f4f4;
-    border-radius: 24px;
-    padding: 30px;
+    display: block;
     text-decoration: none;
+    height: 300px; /* Fixed height for uniformity */
+    background-color: #2E7D32; /* Solid green background for the left side */
     overflow: hidden;
+    border-radius: 15px;
+}
+
+/* Text Content */
+.category-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 30px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    align-items: flex-start;
 }
 
-.category-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(185, 255, 159, 0.30); /* Slight gray/black overlay (15% opacity) */
-    z-index: 2; /* Sits above the image, but below the text */
-    pointer-events: none; /* Allows clicks to pass through to the card link */
-    transition: background-color 0.3s ease;
-}
-
-
-.category-card:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.category-card:hover::before {
-    background-color: transparent;
-}
-
-/* Grid Placement */
-.card-medicines {
-    grid-column: 1 / 2;
-    grid-row: 1 / 3; /* Spans both rows */
-}
-
-.card-vitamins {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2; /* Top middle */
-}
-
-.card-firstaid {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3; /* Bottom middle */
-}
-
-.card-baby {
-    grid-column: 3 / 4;
-    grid-row: 1 / 3; /* Spans both rows */
-}
-
-/* Card Content (Text & Button) */
-.card-content {
-    position: relative;
-    z-index: 3; /* Keeps text above images */
-}
-
-.card-vitamins .card-content,
-.card-firstaid .card-content {
-    text-align: right;        /* Aligns the text and button to the right */
-    width: 100%;              /* Ensures the container takes up the full card width */
-    display: flex;            /* Using flex helps perfectly align the button too */
-    flex-direction: column;
-    align-items: flex-end;    /* Pushes the flex items (button) to the right edge */
-}
-
-.category-card h3 {
+.category-content h3 {
     font-size: 32px;
     font-weight: 700;
-    color: #6de640; /* Bright green from your reference */
+    color: #ffffff; /* White text */
     margin: 0 0 16px 0;
     line-height: 1.1;
 }
 
-.explore-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #6de640;
-    color: #fff;
-    padding: 8px 16px;
+/* Explore Category Outline Button */
+.explore-outline-btn {
+    display: inline-block;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 6px 16px;
     border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    transition: background 0.2s;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-.category-card:hover .explore-btn {
-    background-color: #5ce034;
+.category-card:hover .explore-outline-btn {
+    background-color: #ffffff;
+    color: #2E7D32; /* Text turns green on hover */
 }
 
-/* Card Images */
-.card-img {
+/* Image Positioning */
+.category-img {
     position: absolute;
-    inset: 0;                /* top/right/bottom/left: 0 */
+    inset: 0;               /* top/right/bottom/left: 0 */
     width: 100%;
     height: 100%;
-    object-fit: cover;       /* fills the card, crops overflow */
-    object-position: center bottom;  /* keeps the bottom of the image visible */
+    object-fit: cover;      /* fills the whole card, crops any overflow */
+    object-position: center;
     z-index: 1;
     pointer-events: none;
 }
@@ -718,55 +666,109 @@ body, html {
 /* Responsive */
 @media (max-width: 900px) {
     .categories-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        height: auto;
-    }
-
-    .card-medicines, .card-vitamins, .card-firstaid, .card-baby {
-        grid-column: auto;
-        grid-row: auto;
-        min-height: 250px;
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 600px) {
     .categories-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
     }
     
     .categories-header h2 {
         font-size: 24px;
     }
+    
+    .category-content h3 {
+        font-size: 28px;
+    }
 }
 
 /* ===== FEATURED PRODUCTS SECTION ===== */
 .featured-products {
-    padding: 60px 24px 80px 24px;
+    margin-top: 50px;
+    padding: 30px 24px 40px 24px;
     background-color: #fff;
 }
 
 .featured-container {
-    max-width: 1200px; /* Matches navbar and other sections */
+    max-width: 1200px; 
     margin: 0 auto;
 }
 
 .featured-title {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
-    text-align: center;
-    color: #4CAF50;
-    margin: 0 0 50px 0;
-    letter-spacing: -0.5px;
+    text-align: center; /* Aligned left as per reference */
+    color: #2E7D32; /* Dark green */
+    margin: 0 0 30px 0;
 }
 
+/* Category Filter Pills */
+.filter-pills {
+    display: flex;
+    justify-content: center; /* Centers the pills under the title */
+    align-items: center;
+    flex-wrap: wrap;         /* Allows them to wrap on smaller screens */
+    gap: 12px;
+    margin-bottom: 40px;     /* Space between the pills and the product grid */
+}
+
+.filter-btn {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #333;
+    padding: 8px 24px;
+    border-radius: 999px;    /* Pill shape */
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f0f0f0;
+}
+
+/* The active state (the green 'All' button) */
+.filter-btn.active {
+    background-color: #2E7D32; /* Dark green */
+    color: #fff;
+    border-color: #2E7D32;
+}
+
+/* Grid: fixed column widths from the design */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 30px 24px;
+    grid-template-columns: 549.17px 272.01px 272.01px;
+    justify-content: space-between;   /* spreads the leftover space so the grid spans the full 1200px */
+    column-gap: 24px;                 /* minimum gap */
+    row-gap: 24px;
 }
 
-/* Product Card */
+/* Large card spans both rows */
+.product-card.card-large {
+    grid-row: span 2;
+}
+
+/* Large card image: 549.17 x 424.93 */
+.card-large .product-image-wrapper {
+    width: 549.17px;
+    height: 500px;
+    aspect-ratio: auto;   /* removes the square constraint */
+    flex: none;           /* stops it from stretching */
+    min-height: 0;        /* remove the old 400px min-height */
+}
+
+/* Small card images: 272.01 wide */
+.product-card:not(.card-large) .product-image-wrapper {
+    width: 272.01px;
+    height: 181px;
+    aspect-ratio: auto;   /* replaces the old 1 / 1 */
+}
+
+/* Standard Product Card */
 .product-card {
     text-decoration: none;
     color: inherit;
@@ -775,34 +777,17 @@ body, html {
     transition: transform 0.2s ease;
 }
 
-
-/* Image Wrapper (The Gray Box) */
-/* Product Image Wrapper (The Gray Box) */
+/* Image Wrapper */
 .product-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1; /* Keeps small cards square */
     background-color: #e6e6e6; 
-    border-radius: 24px;
+    border-radius: 16px;
     margin-bottom: 16px;
     overflow: hidden;
 }
 
-/* ADD THIS BLOCK RIGHT HERE */
-.product-image-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(185, 255, 159, 0.30); /* The same green overlay */
-    z-index: 2; 
-    pointer-events: none; 
-    transition: background-color 0.3s ease;
-}
-
-/* Make it disappear on hover */
 .product-card:hover .product-image-wrapper::before {
     background-color: transparent;
 }
@@ -812,25 +797,27 @@ body, html {
     position: absolute;
     top: 16px;
     left: 16px;
-    background-color: #6de640;
+    background-color:#2E7D32; /* Gray badge from reference */
     color: #fff;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     padding: 6px 14px;
     border-radius: 999px;
-    z-index: 2;
+    z-index: 3;
 }
 
+/* Actual Image */
 .product-image-placeholder {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This forces the image to fill the box and crop edges if necessary */
-    object-position: center; /* Centers the image */
-    display: block; /* Removes small spacing gaps below images */
-    transition: transform 0.3s ease; /* Optional: for a smooth hover effect */
+    object-fit: cover; 
+    object-position: center; 
+    display: block; 
+    z-index: 1;
+    transition: transform 0.3s ease; 
 }
 
-/* Product Info */
+/* Product Info Typography */
 .product-info {
     display: flex;
     flex-direction: column;
@@ -838,17 +825,22 @@ body, html {
 }
 
 .product-category {
-    font-size: 13px;
-    color: #777;
+    font-size: 12px;
+    color: #2E7D32;
     margin-bottom: 4px;
 }
 
 .product-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
     color: #000;
     margin: 0 0 8px 0;
     line-height: 1.3;
+}
+
+/* Make the text larger for the big card */
+.card-large .product-name {
+    font-size: 18px;
 }
 
 .product-rating {
@@ -859,7 +851,7 @@ body, html {
 }
 
 .stars {
-    color: #FFC107; /* Gray stars as seen in your screenshot */
+    color: #ffd900; /* Gray stars */
     font-size: 16px;
     letter-spacing: 2px;
 }
@@ -870,42 +862,63 @@ body, html {
 }
 
 .product-price {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     color: #000;
 }
 
+.card-large .product-price {
+    font-size: 20px;
+}
+
+/* View All Button */
 .featured-view-all {
     display: flex;
-    justify-content: center; /* Centers the button horizontally */
-    margin-top: 50px;        /* Adds space between the product grid and the button */
+    justify-content: center; 
+    margin-top: 40px;        
     width: 100%;
 }
 
-.featured-view-all a {
-    color: #4CAF50;
+.btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #2E7D32;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 500;
     text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+.btn-view-all:hover {
+    background-color: #1B5E20;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
     .products-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablets */
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: stretch;
+    }
+
+    .product-card.card-large {
+        grid-row: auto;
+    }
+
+    .card-large .product-image-wrapper,
+    .product-card:not(.card-large) .product-image-wrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 }
 
 @media (max-width: 768px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on small tablets */
-    }
-    
-    .featured-title {
-        font-size: 28px;
-    }
-}
-
-@media (max-width: 480px) {
-    .products-grid {
-        grid-template-columns: 1fr; /* 1 column on phones */
+        grid-template-columns: 1fr;
     }
 }
