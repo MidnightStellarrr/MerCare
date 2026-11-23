@@ -1,18 +1,8 @@
+/* ===== BASE STYLES ===== */
 body, html {
     height: 100%;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-.hero-image {
-    background-image: url("../img/landing_page_headerBg.jpg");
-    height: 600px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    margin: 0 24px;          
-    border-radius: 16px;
 }
 
 /* ===== NAVBAR ===== */
@@ -34,7 +24,6 @@ body, html {
     justify-content: space-between;
 }
 
-/* Logo */
 .nav-logo {
     background-image: url("../img/mercarre logo.png");
     background-size: contain;
@@ -46,11 +35,6 @@ body, html {
     text-decoration: none;
 }
 
-.logo-icon {
-    font-size: 1.6rem;
-}
-
-/* Center Links */
 .nav-links {
     display: flex;
     list-style: none;
@@ -68,7 +52,6 @@ body, html {
     position: relative;
 }
 
-
 .nav-links a::after {
     content: "";
     position: absolute;
@@ -80,14 +63,17 @@ body, html {
     transition: width 0.2s ease;
 }
 
-/* Right Actions */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* Buttons */
+/* General Buttons (Navbar & Base) */
 .btn {
     display: inline-block;
     padding: 9px 20px;
@@ -108,7 +94,6 @@ body, html {
 
 .btn-outline:hover {
     background: #2E7D32;
-    border: 2px solid #2E7D32;
     color: #fff;
 }
 
@@ -193,7 +178,6 @@ body, html {
     border-radius: 2px;
 }
 
-/* Mobile Menu */
 .mobile-menu {
     display: none;
     list-style: none;
@@ -226,21 +210,37 @@ body, html {
     display: block;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .nav-links,
-    .nav-actions {
-        display: none;
-    }
-
-    .nav-toggle {
-        display: flex;
-    }
+/* ===== HERO SECTION ===== */
+.hero-image {
+    background-image: url("../img/landing_page_headerBg.jpg");
+    height: 650px; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin: 0 24px;          
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: rgba(46, 125, 50, 0.2); 
+    background-blend-mode: multiply;
 }
-/* ===== HERO SEARCH ===== */
+
+.hero-container {
+    max-width: 1248px;                 /* was 1200px: matches navbar content width */
+    margin: 0 auto;
+    padding: 80px 24px 40px 24px;      /* side padding was 40px, now 24px like navbar */
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Hero Search */
 .hero-search {
     position: absolute;
-    top: 40px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -257,10 +257,9 @@ body, html {
     border-radius: 999px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    padding-left: 18px;      /* space before the icon */
+    padding-left: 18px;
 }
 
-/* Magnifying glass on the left */
 .search-icon {
     font-size: 1.1rem;
     color: #2E7D32;
@@ -285,7 +284,6 @@ body, html {
     color: #999;
 }
 
-/* Search button on the right */
 .search-btn {
     background: #2E7D32;
     color: #fff;
@@ -298,8 +296,8 @@ body, html {
     font-weight: 600;
     font-family: inherit;
     transition: background 0.2s ease;
-    border-radius: 999px;            /* pill button inside the pill bar */
-    margin: 4px;                     /* small inset so it nests inside */
+    border-radius: 999px;
+    margin: 4px;
     flex-shrink: 0;
 }
 
@@ -307,82 +305,244 @@ body, html {
     background: #1B5E20;
 }
 
+/* Hero Text & Badge */
+.hero-badge {
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.badge-logos {
+    display: flex;
+}
+
+.mini-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #fff;
+    object-fit: contain;
+    margin-left: -10px; 
+}
+
+.mini-logo:first-child {
+    margin-left: 0;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.badge-text strong {
+    font-size: 1rem;
+}
+
+.hero-headline {
+    font-size: 50px; 
+    font-weight: 700;
+    line-height: 1.1;
+    color: #82fb51;
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.hero-subheadline {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #ffffff;
+    font-weight: 600;
+    margin: 0 0 40px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.main-contents {
+    width: 100%;
+}
+
+/* Hero Actions (Buttons & Video Link) */
+.hero-actions-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes buttons left, play link right */
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%; /* Stretches to the full width of the container */
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+/* Hero Specific Button Overrides */
+.btn-outline-white {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff !important; 
+}
+
+.btn-outline-white:hover {
+    background: #fff;
+    color: #2E7D32;
+}
+
+.hero-btn-solid {
+    background: #6de640;
+    color: #fcfcfc;
+    border: 2px solid #6de640;
+    font-weight: 700;
+}
+
+.hero-btn-solid:hover {
+    background: #5ce034;
+    border-color: #5ce034;
+}
+
+/* Play Button */
+.play-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.2s ease;
+    margin-left: 50px;
+}
+
+.play-link:hover {
+    opacity: 0.8;
+}
+
+.play-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-icon svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px; 
+}
+
 /* ===== HOW IT WORKS SECTION ===== */
 .how-it-works {
     padding: 60px 24px;
-    background-color: #fff; /* Ensures it's white even if body changes */
+    background-color: #fff;
 }
 
 .how-it-works-container {
-    max-width: 1200px;
+    max-width: 1248px;                 /* was 1200px */
     margin: 0 auto;
+    padding: 0 24px;                   /* new: same inset as navbar */
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 40px;
 }
 
-/* Individual Card */
+.step-icon-wrapper {
+    flex-shrink: 0;
+    width: 169px;
+    height: 169px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;       /* was center: this pushed the first icon right of the logo edge */
+}
+
 .step-card {
-    flex: 1; /* Makes all 3 cards take up equal width */
+    flex: 1;
     display: flex;
     align-items: flex-start;
-    gap: 20px; /* Space between icon and text */
+    gap: 20px;
 }
 
-/* Icon Area */
-.step-icon-wrapper {
-    flex-shrink: 0; /* Prevents the icon from squishing */
-    width: 179px;    /* Adjust based on your actual image size */
-    height: 179px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Use this to test without images, remove when you add your <img> tags */
-.icon-placeholder {
-    background: #e0e0e0;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    color: #666;
-}
-
-/* When you add your actual images, make sure they behave like this: */
 .step-icon-wrapper img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
 }
 
-/* Text Content */
 .step-content {
     margin-top: 30px;
     flex: 1;
 }
 
 .step-title {
-    color: #4CAF50; /* Lighter green from your image */
+    color: #4CAF50;
     font-size: 21px;
     font-weight: 700;
     margin: 0 0 8px 0;
 }
 
 .step-description {
-    color: #087350; /* Darker green from your image */
+    color: #087350;
     font-size: 12px;
     line-height: 1.5;
     font-weight: 600;
     margin: 0;
 }
 
-/* Responsive: Stack them on smaller screens */
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 900px) {
+    /* Navbar */
+    .nav-links,
+    .nav-actions {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Hero */
+    .hero-image {
+        height: auto;
+        margin: 0 16px;
+    }
+
+    .hero-container {
+        padding: 100px 24px 60px 24px;     /* was 20px sides */
+    }
+
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* How It Works */
     .how-it-works-container {
         flex-direction: column;
         gap: 40px;

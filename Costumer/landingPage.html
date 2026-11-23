@@ -9,70 +9,111 @@
 </head>
 <body>
     <!-- Navbar -->
-        <nav class="navbar">
-            <div class="nav-container">
-                <a href="landingPage.html" class="nav-logo"></a>
-                <ul class="nav-links">
-                    <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#find-pharmacy">Find a Pharmacy</a></li>
-                    <li><a href="#for-pharmacies">For Pharmacies</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <div class="nav-actions">
-                    <a href="login.html" class="btn btn-outline">Log In</a>
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle">
-                            Register <span class="caret">▾</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="register-customer.html">Register as Customer</a></li>
-                            <li><a href="register-pharmacy.html">Register as Pharmacy</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Mobile Hamburger -->
-                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-            </div>
-
-            <!-- Mobile Menu -->
-            <ul class="mobile-menu" id="mobileMenu">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="landingPage.html" class="nav-logo"></a>
+            <ul class="nav-links">
                 <li><a href="#how-it-works">How It Works</a></li>
                 <li><a href="#find-pharmacy">Find a Pharmacy</a></li>
                 <li><a href="#for-pharmacies">For Pharmacies</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li class="mobile-divider"></li>
-                <li><a href="login.html">Log In</a></li>
-                <li><a href="register-customer.html">Register as Customer</a></li>
-                <li><a href="register-pharmacy.html">Register as Pharmacy</a></li>
             </ul>
-        </nav>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline">Log In</a>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle">
+                        Register <span class="caret">▾</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="register-customer.html">Register as Customer</a></li>
+                        <li><a href="register-pharmacy.html">Register as Pharmacy</a></li>
+                    </ul>
+                </div>
+            </div>
 
-    <!-- Hero Image -->
+            <!-- Mobile Hamburger -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <ul class="mobile-menu" id="mobileMenu">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#find-pharmacy">Find a Pharmacy</a></li>
+            <li><a href="#for-pharmacies">For Pharmacies</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="mobile-divider"></li>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="register-customer.html">Register as Customer</a></li>
+            <li><a href="register-pharmacy.html">Register as Pharmacy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
     <div class="hero-image">
-        <div class="hero-search">
-            <form class="search-form" action="search.html" method="get">
-                <i class="bi bi-search search-icon"></i>
-                <input 
-                    type="text" 
-                    name="q" 
-                    class="search-input" 
-                    placeholder="Search for medicines, pharmacies..."
-                    aria-label="Search">
-                <button type="submit" class="search-btn">Search</button>
-            </form>
+        <div class="hero-container">
+            
+            <div class="hero-search">
+                <form class="search-form" action="search.html" method="get">
+                    <i class="bi bi-search search-icon"></i>
+                    <input 
+                        type="text" 
+                        name="q" 
+                        class="search-input" 
+                        placeholder="Search for medicines, pharmacies..."
+                        aria-label="Search">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div> 
+            
+            <div class="main-contents">
+                <!-- Top Badge -->
+                <div class="hero-badge">
+                    <div class="badge-logos">
+                        <img src="img/mercarre logo.png" alt="Pharmacy 1" class="mini-logo">
+                        <img src="img/mercarre logo.png" alt="Pharmacy 2" class="mini-logo">
+                        <img src="img/mercarre logo.png" alt="Pharmacy 3" class="mini-logo">
+                    </div>
+                    <div class="badge-text">
+                        <strong>5K +</strong>
+                        <span>National Pharmacies</span>
+                    </div>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="hero-headline">Skip the guesswork.<br>Find your medicine<br>in minutes.</h1>
+
+                <!-- Subheadline -->
+                <p class="hero-subheadline">
+                    The fastest way to find, order, and receive<br>medicines from pharmacies near you.
+                </p>
+
+                <!-- Action Buttons & Play Link -->
+                <div class="hero-actions-wrapper">
+                    <div class="hero-buttons">
+                        <a href="browse.html" class="btn btn-outline-white">Browse Products</a>
+                        <a href="find-pharmacy.html" class="btn hero-btn-solid">Find a Pharmacy Near Me</a>
+                    </div>
+                    
+                    <a href="#how-it-works" class="play-link">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span>See how MerCare works</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- How it Works -->
-    <section class="how-it-works">
+    <!-- How it Works Section -->
+    <section class="how-it-works" id="how-it-works">
         <div class="how-it-works-container">
             
             <!-- Step 1 -->
@@ -107,9 +148,9 @@
                     <img src="img/receiveIcon.png" alt="receiveIcon">
                 </div>
                 <div class="step-content">
-                    <h3 class="step-title">Locate</h3> <!-- Note: Your image has 'Locate' here twice, you might want to change one -->
+                    <h3 class="step-title">Receive</h3>
                     <p class="step-description">
-                        View pharmacy locations on the map. Choose the closest one or the one with the best price.
+                        Get your medicines delivered straight to your door, or pick them up at your chosen pharmacy.
                     </p>
                 </div>
             </div>
