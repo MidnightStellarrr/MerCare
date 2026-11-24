@@ -1239,9 +1239,13 @@ body, html {
 
 /* ===== CALL TO ACTION SECTION ===== */
 .cta-section {
-    background-color: #3b8c5a; /* The specific green from your screenshot */
+    background-image: url("../img/cta_bg.png"); 
+    background-size: cover;       /* Forces the image to fill the whole area */
+    background-position: center;  /* Centers the image so nothing important gets cut off */
+    background-repeat: no-repeat; /* Prevents the image from tiling if the screen is huge */
     padding: 80px 24px;
     width: 100%;
+    box-sizing: border-box;       /* Ensures padding doesn't push width past 100% */
 }
 
 .cta-container {
@@ -1304,7 +1308,7 @@ body, html {
 
 /* ===== FOOTER SECTION ===== */
 .site-footer {
-    background-color: #d9d9d9; /* Light gray from screenshot */
+    background-color: #3b8c5a; /* Light gray from screenshot */
     padding: 80px 24px 40px 24px;
     width: 100%;
     box-sizing: border-box;
@@ -1321,42 +1325,55 @@ body, html {
 
 /* Left Side: Brand */
 .footer-brand {
-    flex: 0 0 250px; /* Fixed width for the left side */
+    flex: 0 0 250px; 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.logo-circle {
-    width: 60px;
-    height: 60px;
-    background-color: #999;
-    border-radius: 50%;
+/* Logo Styling */
+.footer-logo-link {
+    display: block;
     margin-bottom: 20px;
 }
 
+.footer-logo {
+    width: 120px; /* Adjust this to fit your actual logo */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Tagline */
 .footer-tagline {
     font-size: 16px;
     color: #333;
-    margin: 0 0 40px 0;
+    margin: 0 0 30px 0;
+    line-height: 1.5;
 }
 
+/* Socials */
 .footer-socials {
     display: flex;
-    gap: 16px;
+    gap: 12px;
 }
 
 .social-circle {
-    display: block;
-    width: 24px;
-    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
     background-color: #999;
     border-radius: 50%;
-    transition: background-color 0.2s ease;
+    color: #fff; /* Icon color */
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .social-circle:hover {
-    background-color: #666;
+    background-color: #2E7D32; /* Brand green on hover */
+    transform: translateY(-2px);
 }
 
 /* Right Side: Links Grid */
