@@ -1033,24 +1033,29 @@ body, html {
 /* ===== PARTNER CTA SECTION ===== */
 .partner-cta {
     width: 100%;
-    /* Replace the URL below with your actual image of the pharmacist */
+    /* Keep your background images here */
     background-image: 
         linear-gradient(90deg, rgba(46, 125, 50, 0.95) 0%, rgba(46, 125, 50, 0.7) 40%, rgba(255, 255, 255, 0) 75%),
         url('../img/registerAsPhar.png'); 
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
-    padding: 100px 24px;
-    /* Optional: If you want it perfectly flush with edges, ensure no margins */
-    margin: 0;
+    
+    /* THE FIXES */
+    padding: 100px 0; /* Removed side padding so it goes edge-to-edge */
+    margin: 0;        /* Ensures no outer margin */
+    box-sizing: border-box; 
 }
 
+/* We move the side padding to the inner container instead */
 .partner-cta-container {
-    max-width: 1200px; /* Aligns content with the rest of your site */
+    max-width: 1200px; 
     margin: 0 auto;
+    padding: 0 24px; /* This keeps the text aligned with the rest of your site */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    box-sizing: border-box;
 }
 
 .partner-subtitle {
@@ -1308,78 +1313,86 @@ body, html {
 
 /* ===== FOOTER SECTION ===== */
 .site-footer {
-    background-color: #3b8c5a; /* Light gray from screenshot */
-    padding: 80px 24px 40px 24px;
+    background-color: #3b8c5a;
+    padding: 80px 0px 40px 0px;
     width: 100%;
     box-sizing: border-box;
+    color: #fff;
 }
 
 .footer-container {
+    box-sizing: content-box;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 60px auto;
+    padding: 0 24px;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 60px;
-    margin-bottom: 60px;
 }
 
 /* Left Side: Brand */
 .footer-brand {
-    flex: 0 0 250px; 
+    flex: 0 0 250px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-/* Logo Styling */
 .footer-logo-link {
     display: block;
     margin-bottom: 20px;
 }
 
 .footer-logo {
-    width: 120px; /* Adjust this to fit your actual logo */
+    width: 120px;
     height: auto;
     object-fit: contain;
+    display: block;
 }
 
-/* Tagline */
 .footer-tagline {
     font-size: 16px;
-    color: #333;
-    margin: 0 0 30px 0;
+    font-style: italic;
+    color: #fff;
+    margin: 0 0 24px 0;
     line-height: 1.5;
 }
 
-/* Socials */
+/* Socials: no circles, icons only */
 .footer-socials {
     display: flex;
-    gap: 12px;
+    gap: 20px;
 }
 
 .social-circle {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: #999;
-    border-radius: 50%;
-    color: #fff; /* Icon color */
+    width: auto;
+    height: auto;
+    background: none;                 /* removes the circle */
+    border-radius: 0;
+    color: #fff;
     text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-size: 22px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .social-circle:hover {
-    background-color: #2E7D32; /* Brand green on hover */
+    background: none;
+    opacity: 0.8;
     transform: translateY(-2px);
 }
 
 /* Right Side: Links Grid */
 .footer-links-grid {
+    margin-top: 15px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    align-items: start;               /* headings line up across columns */
+    text-align: left;
     gap: 40px;
     flex: 1;
 }
@@ -1387,8 +1400,9 @@ body, html {
 .footer-column h4 {
     font-size: 16px;
     font-weight: 700;
-    color: #000;
+    color: #fff;
     margin: 0 0 20px 0;
+    line-height: 1.2;
 }
 
 .footer-column ul {
@@ -1397,38 +1411,44 @@ body, html {
     margin: 0;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;          /* links share the same left edge as the heading */
     gap: 12px;
 }
 
 .footer-column ul li a {
+    display: block;
     text-decoration: none;
-    color: #333;
+    color: #fff;
     font-size: 14px;
-    transition: color 0.2s ease;
+    line-height: 1.4;
+    transition: opacity 0.2s ease;
 }
 
 .footer-column ul li a:hover {
-    color: #2E7D32;
+    color: #fff;
+    opacity: 0.8;
     text-decoration: underline;
 }
 
-/* Bottom Section (Divider & Copyright) */
+/* Bottom Section */
 .footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 .footer-divider {
+    width: 100%;
     border: none;
-    border-top: 1px solid #999; /* Thin gray line */
+    border-top: 1px solid #fff;
     margin: 0 0 24px 0;
 }
 
 .copyright {
     text-align: center;
-    color: #333;
+    color: #fff;
     font-size: 14px;
     margin: 0;
+    padding: 0 24px;
 }
 
 /* Responsive */
@@ -1437,16 +1457,14 @@ body, html {
         flex-direction: column;
         gap: 40px;
     }
-    
+
     .footer-brand {
-        align-items: center;
-        text-align: center;
         flex: auto;
     }
-    
+
     .footer-links-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-        text-align: center;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: stretch;
     }
 
     .cta-buttons {
@@ -1454,7 +1472,7 @@ body, html {
         width: 100%;
         max-width: 300px;
     }
-    
+
     .btn-cta-outline, .btn-cta-solid {
         width: 100%;
         text-align: center;
@@ -1463,9 +1481,9 @@ body, html {
 
 @media (max-width: 600px) {
     .footer-links-grid {
-        grid-template-columns: 1fr; /* 1 column on phones */
+        grid-template-columns: 1fr;
     }
-    
+
     .cta-headline {
         font-size: 28px;
     }
