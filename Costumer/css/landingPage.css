@@ -922,3 +922,98 @@ body, html {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== NEARBY PHARMACIES SECTION ===== */
+.nearby-pharmacies-section {
+    padding: 80px 24px;
+    background-color: #fff;
+}
+
+.nearby-container {
+    max-width: 1248px; /* Matches your other sections */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Map is slightly wider than the text */
+    gap: 60px;
+    align-items: center; /* Vertically centers the text with the map */
+}
+
+/* --- Left Side: Map --- */
+.map-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 10; /* Gives it a nice rectangular shape */
+    background-color: #d9d9d9; /* Gray placeholder color */
+    border-radius: 24px; /* Rounded corners matching your design */
+    overflow: hidden;
+    /* Optional: add a subtle shadow so it pops off the page */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+}
+
+/* The placeholder div - when you add a real map, 
+   the iframe or map div will take up 100% of the .map-wrapper */
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Right Side: Content --- */
+.nearby-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nearby-subtitle-top {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1B5E20; /* Dark green */
+    margin-bottom: 12px;
+}
+
+.nearby-headline {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #2E7D32; /* Brand green */
+    margin: 0 0 16px 0;
+    letter-spacing: -1px;
+}
+
+.nearby-description {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    margin: 0 0 32px 0;
+    font-weight: 500;
+}
+
+.btn-find-pharmacies {
+    display: inline-block;
+    background-color: #2E7D32;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 999px; /* Pill shape */
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-find-pharmacies:hover {
+    background-color: #1B5E20;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .nearby-container {
+        grid-template-columns: 1fr; /* Stacks vertically on tablets/phones */
+        gap: 40px;
+    }
+    
+    .nearby-headline {
+        font-size: 36px;
+    }
+}

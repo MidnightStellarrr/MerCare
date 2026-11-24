@@ -7,6 +7,8 @@
     <title>Welcome to MerCare</title>
     <link rel="stylesheet" href="css/landingPage.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -311,6 +313,28 @@
         </div>
     </section>
 
+    <!-- See Nearby Pharmacies Section -->
+    <section class="nearby-pharmacies-section">
+        <div class="nearby-container">
+            
+            <!-- Left Side: Interactive Map Container -->
+            <div class="map-wrapper">
+                <div id="map" style="width: 100%; height: 100%;"></div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="nearby-content">
+                <span class="nearby-subtitle-top">Pharmacies Near You</span>
+                <h2 class="nearby-headline">SEE NEARBY<br>PHARMACIES</h2>
+                <p class="nearby-description">
+                    Find the closest pharmacy to your location. View their stock, compare prices, and get your medicines faster.
+                </p>
+                <a href="find-pharmacy.html" class="btn-find-pharmacies">See Pharmacies</a>
+            </div>
+
+        </div>
+    </section>
+
 <script>
     const filterBtns = document.querySelectorAll('.filter-btn');
 
@@ -321,6 +345,46 @@
             // Add active class to the clicked button
             btn.classList.add('active');
         });
+
+        // 1. Initialize the map (center it on a default location initially)
+        var map = L.map('map').setView([14.5995, 120.9842], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // 2. Get the user's actual location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                
+                // Move map to user's location
+                map.setView([lat, lon], 15);
+                
+                // Add a marker for the user
+                L.marker([lat, lon]).addTo(map).bindPopup("You are here");
+
+                // 3. Query Overpass API for pharmacies near these coordinates
+                // We search within a 2000 meter (2km) radius
+                var overpassQuery = `
+                    [out:json];
+                    node["amenity"="pharmacy"](around:2000, ${lat}, ${lon});
+                    out;
+                `;
+                
+                fetch('https://overpass-api.de/api/interpreter', {
+                    method: 'POST',
+                    body: overpassQuery
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // 4. Loop through the results and put them on the map
+                    data.elements.forEach(pharmacy => {
+                        L.marker([pharmacy.lat, pharmacy.lon])
+                            .addTo(map)
+                            .bindPopup(pharmacy.tags.name || "Pharmacy");
+                    });
+                });
+            });
+        }
     });
 </script>
 </body>
