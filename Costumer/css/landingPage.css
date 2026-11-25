@@ -25,7 +25,7 @@ html, body {
 }
 
 .nav-logo {
-    background-image: url("../img/mercarre logo.png");
+    background-image: url("../images/landingPage/mercare_logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -212,7 +212,7 @@ html, body {
 
 /* ===== HERO SECTION ===== */
 .hero-image {
-    background-image: url("../img/landing_page_headerBg.jpg");
+    background-image: url("../images/landingPage/landing_page_headerBg.jpg");
     height: 650px; 
     background-position: center;
     background-repeat: no-repeat;
@@ -1036,7 +1036,7 @@ html, body {
     /* Keep your background images here */
     background-image: 
         linear-gradient(90deg, rgba(46, 125, 50, 0.95) 0%, rgba(46, 125, 50, 0.7) 40%, rgba(255, 255, 255, 0) 75%),
-        url('../img/registerAsPhar.png'); 
+        url('../images/landingPage/registerAsPhar.png'); 
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
@@ -1108,7 +1108,7 @@ html, body {
         /* Adjust gradient for mobile so the text is readable over the image */
         background-image: 
             linear-gradient(90deg, rgba(46, 125, 50, 0.95) 0%, rgba(46, 125, 50, 0.85) 100%),
-            url('../img/registerAsPhar.png');
+            url('../images/landingPage/registerAsPhar.png');
         padding: 60px 24px;
     }
 
@@ -1244,7 +1244,7 @@ html, body {
 
 /* ===== CALL TO ACTION SECTION ===== */
 .cta-section {
-    background-image: url("../img/cta_bg.png"); 
+    background-image: url("../images/landingPage/cta_bg.png"); 
     background-size: cover;       /* Forces the image to fill the whole area */
     background-position: center;  /* Centers the image so nothing important gets cut off */
     background-repeat: no-repeat; /* Prevents the image from tiling if the screen is huge */
