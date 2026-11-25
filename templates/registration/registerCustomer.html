@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
+    <title>Create Account - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <!-- Left Side: Image Banner -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <!-- Logo -->
+                <a href="{% url 'home' %}" class="login-logo-link">
+                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="login-logo">
+                </a>
+                
+                <!-- Bottom Text -->
+                <div class="login-hero-text">
+                    <h1>Skip the guesswork.<br>Start finding medicines<br>today.</h1>
+                    <p>Log in to search real-time, track your orders, and manage your deliveries — all in one place.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="login-right">
+            <div class="login-form-wrapper">
+                
+                <h2 class="login-title">Create your account</h2>
+                <p class="login-subtitle">Search medicines and order in minutes.</p>
+
+                <!-- We will connect this to Django later using method="POST" -->
+                <form action="#" method="POST" class="login-form">
+                    {% csrf_token %}
+                    
+                    <div class="input-group">
+                        <label for="fullname">Fullname</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Norman Loren L. Granada" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Mercare@gmail.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
+                                <i class="bi bi-eye-slash" id="eyeIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password" id="toggleConfirmPassword" aria-label="Toggle password visibility">
+                                <i class="bi bi-eye-slash" id="eyeIconConfirm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Side-by-side Address and Phone -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone no.</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions terms-row">
+                        <label class="remember-me">
+                            <input type="checkbox" name="terms" required>
+                            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-login">Create Account</button>
+                </form>
+
+                <!-- Link back to Login -->
+                <p class="signup-text" style="margin-top: 24px;">
+                    Already have an account? <a href="{% url 'login' %}">Log In</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Password Toggle Script -->
+    <script>
+        function setupPasswordToggle(buttonId, inputId, iconId) {
+            const toggleBtn = document.getElementById(buttonId);
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+
+            toggleBtn.addEventListener('click', function () {
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                
+                if (type === 'text') {
+                    icon.classList.remove('bi-eye-slash');
+                    icon.classList.add('bi-eye');
+                } else {
+                    icon.classList.remove('bi-eye');
+                    icon.classList.add('bi-eye-slash');
+                }
+            });
+        }
+
+        // Initialize both password toggles
+        setupPasswordToggle('togglePassword', 'password', 'eyeIcon');
+        setupPasswordToggle('toggleConfirmPassword', 'confirm_password', 'eyeIconConfirm');
+    </script>
+
+</body>
+</html>

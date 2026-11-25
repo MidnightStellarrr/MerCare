@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/landingPage/mercare_logo.png">
+    <link rel="icon" type="image/png" href="../static/images/landingPage/mercare_logo.png">
     <title>Welcome to MerCare</title>
-    <link rel="stylesheet" href="css/landingPage.css">
+    <link rel="stylesheet" href="{% static 'css/landingPage.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -23,13 +24,13 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline">Log In</a>
+                <a href="{% url 'login' %}" class="btn btn-outline">Log In</a>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle">
                         Register <span class="caret">▾</span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="registerCustomer.html">Register as Customer</a></li>
+                        <li><a href="{% url 'registerCustomer' %}">Register as Customer</a></li>
                         <li><a href="registerPharmacy.html">Register as Pharmacy</a></li>
                     </ul>
                 </div>
@@ -51,7 +52,7 @@
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li class="mobile-divider"></li>
-            <li><a href="login.html">Log In</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
             <li><a href="register-customer.html">Register as Customer</a></li>
             <li><a href="register-pharmacy.html">Register as Pharmacy</a></li>
         </ul>
@@ -78,9 +79,9 @@
                 <!-- Top Badge -->
                 <div class="hero-badge">
                     <div class="badge-logos">
-                        <img src="images/landingPage/mercare_logo.png" alt="Pharmacy 1" class="mini-logo">
-                        <img src="images/landingPage/mercare_logo.png" alt="Pharmacy 2" class="mini-logo">
-                        <img src="images/landingPage/mercare_logo.png" alt="Pharmacy 3" class="mini-logo">
+                        <img src="../static/images/landingPage/mercare_logo.png" alt="Pharmacy 1" class="mini-logo">
+                        <img src="../static/images/landingPage/mercare_logo.png" alt="Pharmacy 2" class="mini-logo">
+                        <img src="../static/images/landingPage/mercare_logo.png" alt="Pharmacy 3" class="mini-logo">
                     </div>
                     <div class="badge-text">
                         <strong>5K +</strong>
@@ -122,7 +123,7 @@
             <!-- Step 1 -->
             <div class="step-card">
                 <div class="step-icon-wrapper">
-                    <img src="images/landingPage/searchIcon.png" alt="searchIcon">
+                    <img src="../static/images/landingPage/searchIcon.png" alt="searchIcon">
                 </div>
                 <div class="step-content">
                     <h3 class="step-title">Search</h3>
@@ -135,7 +136,7 @@
             <!-- Step 2 -->
             <div class="step-card">
                 <div class="step-icon-wrapper">
-                    <img src="images/landingPage/locateIcon.png" alt="locateIcon">
+                    <img src="../static/images/landingPage/locateIcon.png" alt="locateIcon">
                 </div>
                 <div class="step-content">
                     <h3 class="step-title">Locate</h3>
@@ -148,7 +149,7 @@
             <!-- Step 3 -->
             <div class="step-card">
                 <div class="step-icon-wrapper">
-                    <img src="images/landingPage/receiveIcon.png" alt="receiveIcon">
+                    <img src="../static/images/landingPage/receiveIcon.png" alt="receiveIcon">
                 </div>
                 <div class="step-content">
                     <h3 class="step-title">Receive</h3>
@@ -177,7 +178,7 @@
                     <span class="explore-outline-btn">Explore Category</span>
                 </div>
                 <!-- Replace src with your actual image -->
-                <img src="images/landingPage/medicine_cat.png" alt="Medicines" class="category-img">
+                <img src="../static/images/landingPage/medicine_cat.png" alt="Medicines" class="category-img">
             </a>
 
             <!-- 2. Vitamins & Supplements -->
@@ -187,7 +188,7 @@
                     <span class="explore-outline-btn">Explore Category</span>
                 </div>
                 <!-- Replace src with your actual image -->
-                <img src="images/landingPage/vitamin_cat.png" alt="Vitamins" class="category-img">
+                <img src="../static/images/landingPage/vitamin_cat.png" alt="Vitamins" class="category-img">
             </a>
 
             <!-- 3. First Aid -->
@@ -197,7 +198,7 @@
                     <span class="explore-outline-btn">Explore Category</span>
                 </div>
                 <!-- Replace src with your actual image -->
-                <img src="images/landingPage/kit_cat.png" alt="First Aid" class="category-img">
+                <img src="../static/images/landingPage/kit_cat.png" alt="First Aid" class="category-img">
             </a>
 
         </div>
@@ -224,7 +225,7 @@
                 <a href="#" class="product-card card-large">
                     <div class="product-image-wrapper">
                         <span class="pharmacy-badge">Mercury Drug - Quezon Ave</span>
-                        <img src="images/landingPage/Biogesic_deals.png" alt="Product Image" class="product-image-placeholder">
+                        <img src="../static/images/landingPage/Biogesic_deals.png" alt="Product Image" class="product-image-placeholder">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Pain Relief & Fever</span>
@@ -241,7 +242,7 @@
                 <a href="#" class="product-card">
                     <div class="product-image-wrapper">
                         <span class="pharmacy-badge">Mercury Drug - Quezon Ave</span>
-                        <img src="images/landingPage/neozep_deals.png" alt="Product Image" class="product-image-placeholder">
+                        <img src="../static/images/landingPage/neozep_deals.png" alt="Product Image" class="product-image-placeholder">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Pain Relief & Fever</span>
@@ -258,7 +259,7 @@
                 <a href="#" class="product-card">
                     <div class="product-image-wrapper">
                         <span class="pharmacy-badge">Pharmacy name</span>
-                        <img src="images/landingPage/fernC_deals.png" alt="Product Image" class="product-image-placeholder">
+                        <img src="../static/images/landingPage/fernC_deals.png" alt="Product Image" class="product-image-placeholder">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Vitamins & Supplements</span>
@@ -275,7 +276,7 @@
                 <a href="#" class="product-card">
                     <div class="product-image-wrapper">
                         <span class="pharmacy-badge">Mercury Drug - Quezon Ave</span>
-                        <img src="images/landingPage/pampers_deals.png" alt="Product Image" class="product-image-placeholder">
+                        <img src="../static/images/landingPage/pampers_deals.png" alt="Product Image" class="product-image-placeholder">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Baby & Maternal Care</span>
@@ -292,7 +293,7 @@
                 <a href="#" class="product-card">
                     <div class="product-image-wrapper">
                         <span class="pharmacy-badge">South Star Drug - Cubao</span>
-                        <img src="images/landingPage/betadine_deals.png" alt="Product Image" class="product-image-placeholder">
+                        <img src="../static/images/landingPage/betadine_deals.png" alt="Product Image" class="product-image-placeholder">
                     </div>
                     <div class="product-info">
                         <span class="product-category">First Aid & Wound Care</span>
@@ -362,7 +363,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"MerCare saved me so much time. I found my prescription in stock at a pharmacy just 2 blocks away!"</p>
                     <div class="user-info">
-                            <img src="images/landingPage/profile_1.jpg" alt="" class="profile-placeholder">
+                            <img src="../static/images/landingPage/profile_1.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Maria Santos</h4>
                             <span class="user-address">Quezon City</span>
@@ -372,7 +373,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"The delivery was incredibly fast. I didn't have to leave the house while I was sick. Highly recommended."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_2.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_2.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">John Dela Cruz</h4>
                             <span class="user-address">Makati City</span>
@@ -382,7 +383,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"I love that I can compare prices before buying. It really helps with budgeting my maintenance meds."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_3.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_3.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Anna Reyes</h4>
                             <span class="user-address">Pasig City</span>
@@ -394,7 +395,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"MerCare saved me so much time. I found my prescription in stock at a pharmacy just 2 blocks away!"</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_4.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_4.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Maria Santos</h4>
                             <span class="user-address">Quezon City</span>
@@ -404,7 +405,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"The delivery was incredibly fast. I didn't have to leave the house while I was sick. Highly recommended."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_5.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_5.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">John Dela Cruz</h4>
                             <span class="user-address">Makati City</span>
@@ -414,7 +415,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"I love that I can compare prices before buying. It really helps with budgeting my maintenance meds."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_6.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_6.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Anna Reyes</h4>
                             <span class="user-address">Pasig City</span>
@@ -431,7 +432,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"Customer service is top-notch. I had a question about a generic brand and they answered immediately."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_1.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_1.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Mark Lim</h4>
                             <span class="user-address">Taguig City</span>
@@ -441,7 +442,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"Finally, an app that tells you exactly which pharmacy has stock. No more driving around town."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_2.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_2.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Sarah Gomez</h4>
                             <span class="user-address">Mandaluyong</span>
@@ -451,7 +452,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"Registering my small pharmacy was easy, and I've seen a steady increase in new customers."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_3.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_3.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Dr. Roberto</h4>
                             <span class="user-address">Pharmacy Owner</span>
@@ -463,7 +464,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"Customer service is top-notch. I had a question about a generic brand and they answered immediately."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_4.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_4.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Mark Lim</h4>
                             <span class="user-address">Taguig City</span>
@@ -473,7 +474,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"Finally, an app that tells you exactly which pharmacy has stock. No more driving around town."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_5.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_5.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Sarah Gomez</h4>
                             <span class="user-address">Mandaluyong</span>
@@ -483,7 +484,7 @@
                 <div class="testimonial-card">
                     <p class="comment">"Registering my small pharmacy was easy, and I've seen a steady increase in new customers."</p>
                     <div class="user-info">
-                        <img src="images/landingPage/profile_6.jpg" alt="" class="profile-placeholder">
+                        <img src="../static/images/landingPage/profile_6.jpg" alt="" class="profile-placeholder">
                         <div>
                             <h4 class="user-name">Dr. Roberto</h4>
                             <span class="user-address">Pharmacy Owner</span>
@@ -513,7 +514,7 @@
             <div class="footer-brand">
                 <!-- Logo -->
                 <a href="landingPage.html" class="footer-logo-link">
-                    <img src="images/landingPage/logo_pt2.png" alt="MerCare Logo" class="footer-logo">
+                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="footer-logo">
                 </a>
                 
                 <!-- Tagline -->

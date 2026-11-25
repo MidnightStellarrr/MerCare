@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/landingPage/mercare_logo.png">
     <title>Log In - MerCare</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
                 <!-- Logo -->
                 <a href="landingPage.html" class="login-logo-link">
                     <!-- Replace with your actual white logo version -->
-                    <img src="images/authentication/logo_pt2.png" alt="MerCare Logo" class="login-logo">
+                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="login-logo">
                 </a>
                 
                 <!-- Bottom Text -->
