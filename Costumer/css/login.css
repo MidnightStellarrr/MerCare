@@ -1,0 +1,269 @@
+/* ===== LOGIN PAGE STYLES ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-container {
+    display: flex;
+    height: 100vh; /* Takes full screen height */
+    width: 100%;
+}
+
+/* --- Left Side (Image) --- */
+.login-left {
+    flex: 1; /* Takes up 50% width */
+    /* Replace with your actual image */
+    background-image: url('../images/authentication/customerAuthentication.png'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* Optional: Adds a subtle green tint if your image is too bright */
+    background-color: rgba(46, 125, 50, 0.2);
+    background-blend-mode: multiply;
+    
+    /* Match the rounded corners in the design */
+    border-radius: 24px;
+    margin: 20px;
+}
+
+.login-left-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-logo {
+    width: 100px;
+    height: auto;
+    /* Forces the logo to be pure white if it's currently dark */
+    filter: brightness(0) invert(1);
+}
+
+.login-hero-text {
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+.login-hero-text h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.login-hero-text p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 400px;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+/* --- Right Side (Form) --- */
+.login-right {
+    flex: 1; /* Takes up 50% width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px;
+}
+
+.login-form-wrapper {
+    width: 100%;
+    max-width: 450px; /* Limits form width for larger screens */
+}
+
+.login-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.login-subtitle {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 40px 0;
+}
+
+/* Form Inputs */
+.input-group {
+    margin-bottom: 24px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #2E7D32; /* Green focus ring */
+}
+
+/* Remember Me & Forgot Password */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #2E7D32; /* Colors the checkbox green */
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Login Button */
+.btn-login {
+    width: 100%;
+    background-color: #2E7D32;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 999px; /* Pill shape */
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+    background-color: #1B5E20;
+}
+
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+    color: #999;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+    padding: 0 16px;
+}
+
+/* Sign Up Text */
+.signup-text {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+}
+
+.signup-text a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* Wrapper for the password input and eye icon */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Ensure the input leaves space for the icon on the right */
+.password-wrapper input {
+    padding-right: 48px; /* Prevents text from hiding behind the icon */
+}
+
+/* The Eye Button */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    font-size: 18px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #2E7D32; /* Turns green on hover */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .login-left {
+        display: none; /* Hides the image on mobile so form is visible */
+    }
+
+    .login-right {
+        padding: 40px 24px;
+    }
+}

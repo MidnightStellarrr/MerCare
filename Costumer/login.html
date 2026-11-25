@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/landingPage/mercare_logo.png">
+    <title>Log In - MerCare</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="login-container">
+        
+        <!-- Left Side: Image Banner -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <!-- Logo -->
+                <a href="landingPage.html" class="login-logo-link">
+                    <!-- Replace with your actual white logo version -->
+                    <img src="images/authentication/logo_pt2.png" alt="MerCare Logo" class="login-logo">
+                </a>
+                
+                <!-- Bottom Text -->
+                <div class="login-hero-text">
+                    <h1>Your medicines, just a<br>click away.</h1>
+                    <p>Log in to search real-time, track your orders, and manage your deliveries — all in one place.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="login-right">
+            <div class="login-form-wrapper">
+                
+                <h2 class="login-title">Welcome back to<br>MerCare</h2>
+                <p class="login-subtitle">Log in to search, order, or manage.</p>
+
+                <form action="#" class="login-form">
+                    
+                    <div class="input-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Mercare@gmail.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                            <div class="password-wrapper">
+                                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                                    <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
+                                        <i class="bi bi-eye-slash" id="eyeIcon"></i>
+                                    </button>
+                            </div>          
+                    </div>
+
+                    <div class="form-actions">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">Log In</button>
+                </form>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <!-- Sign Up Link -->
+                <p class="signup-text">
+                    Don't have an account? <a href="register-customer.html">Sign Up</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    togglePassword.addEventListener('click', function () {
+        // Check if the input is currently a password
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        
+        // Toggle the input type
+        passwordInput.setAttribute('type', type);
+        
+        // Toggle the icon class (eye-slash <-> eye)
+        if (type === 'text') {
+            eyeIcon.classList.remove('bi-eye-slash');
+            eyeIcon.classList.add('bi-eye');
+        } else {
+            eyeIcon.classList.remove('bi-eye');
+            eyeIcon.classList.add('bi-eye-slash');
+        }
+    });
+</script>
+</body>
+</html>
