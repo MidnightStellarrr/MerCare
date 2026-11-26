@@ -8,3 +8,9 @@ def login_view(request):
 
 def registerCustomer(request):
     return render(request, 'registration/registerCustomer.html')
+
+def categoriesPage(request):
+    return render(request, 'categoriesPage.html')
+
+def navBar_noLogin(request):
+    return render(request, 'components/navBar_noLogin.html')

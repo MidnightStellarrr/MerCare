@@ -443,7 +443,7 @@ html, body {
 
 /* ===== HOW IT WORKS SECTION ===== */
 .how-it-works {
-    padding: 60px 24px;
+    padding: 60px 0;
     background-color: #fff;
 }
 
@@ -942,7 +942,7 @@ html, body {
 }
 
 .nearby-container {
-    max-width: 1248px; /* Matches your other sections */
+    max-width: 1200px; /* Matches your other sections */
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1.2fr 1fr; /* Map is slightly wider than the text */

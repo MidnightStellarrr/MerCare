@@ -1,0 +1,148 @@
+/* ==============================
+   MERCARE NAVBAR - NOT LOGGED IN
+================================= */
+
+.mercare-navbar {
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.mercare-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Logo */
+.mercare-logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.mercare-logo img {
+    width: 80px;
+    height: 56px;
+    object-fit: contain;
+}
+
+/* Search Bar */
+.mercare-search {
+    display: flex;
+    align-items: center;
+    flex: 0 1 440px;          /* up to 440px wide, shrinks on smaller screens */
+    height: 42px;
+    background-color: #21834f;
+    border-radius: 999px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.mercare-search button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.mercare-search input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    padding-left: 16px;
+}
+
+.mercare-search input::placeholder {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+/* Authentication Buttons */
+.mercare-auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;        /* pushes buttons to the far right */
+}
+
+.mercare-register-btn,
+.mercare-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 40px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Register: outlined */
+.mercare-register-btn {
+    background-color: #ffffff;
+    color: #21834f;
+    border: 1.5px solid #21834f;
+}
+
+.mercare-register-btn:hover {
+    background-color: #21834f;
+    color: #ffffff;
+}
+
+/* Login: solid */
+.mercare-login-btn {
+    background-color: #21834f;
+    color: #ffffff;
+    border: 1.5px solid #21834f;
+}
+
+.mercare-login-btn:hover {
+    background-color: #176b3e;
+    border-color: #176b3e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mercare-nav-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 12px 16px;
+        gap: 12px;
+    }
+
+    .mercare-search {
+        order: 3;             /* search drops to its own row under logo + buttons */
+        flex: 1 1 100%;
+    }
+
+    .mercare-auth-buttons {
+        gap: 10px;
+    }
+
+    .mercare-register-btn,
+    .mercare-login-btn {
+        width: 96px;
+    }
+}
