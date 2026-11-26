@@ -5,9 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/categoriesPage.css' %}">
     <link rel="icon" type="image/png" href="../static/images/landingPage/mercare_logo.png">
 </head>
 <body>
     {% include 'components/navBar_noLogin.html' %}
+
+    <main class="categories-page">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="#">Home</a>
+            <span class="breadcrumb-divider"></span>
+            <span class="breadcrumb-current">Categories</span>
+        </nav>
+
+        <!-- Promo Banners -->
+        <section class="promo-grid">
+
+            <!-- Large left banner -->
+            <article class="promo-card promo-vitamins">
+                <img src="../static/images/categories/add_1.jpg" alt="" class="promo-img">
+                <div class="promo-content">
+                    <h2 class="promo-title">Up to 30% off<br>on Vitamins &amp;<br>Supplements</h2>
+                    <p class="promo-subtitle">Stock up on daily essentials from pharmacies near you</p>
+                    <a href="#" class="promo-btn">Order Now</a>
+                </div>
+            </article>
+
+            <!-- Top right banner -->
+            <article class="promo-card promo-sale">
+                <img src="../static/images/categories/add_2.png" alt="" class="promo-img">
+                <div class="promo-content">
+                    <span class="promo-tag">Mid-Month Sale</span>
+                    <h2 class="promo-discount">30% OFF</h2>
+                    <p class="promo-product">Centrum Advance Multivitamins (60 tabs)</p>
+
+                    <ul class="promo-meta">
+                        <li>
+                            <span>Mercury Drug</span>
+                            <i class="bi bi-shop"></i>
+                        </li>
+                        <li>
+                            <span>1.2 km away</span>
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="promo-btn">Buy Now</a>
+                </div>
+            </article>
+
+            <!-- Bottom right banner -->
+            <article class="promo-card promo-bogo">
+                <img src="../static/images/categories/add_3.png" alt="" class="promo-img">
+                <div class="promo-content">
+                    <h2 class="promo-bogo-title">Buy 1 Take 1</h2>
+                    <p class="promo-product">Biogesic 500mg Tablet</p>
+                    <a href="#" class="promo-btn">View Details</a>
+                </div>
+            </article>
+
+        </section>
+    </main>
 </body>
 </html>
