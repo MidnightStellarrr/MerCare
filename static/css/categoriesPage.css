@@ -101,7 +101,6 @@
 
 .promo-btn:hover {
     background-color: #1B5E20;
-    transform: translateY(-2px);
 }
 
 /* --- 1. Vitamins banner (large left) --- */
@@ -158,15 +157,14 @@
 
 .promo-discount {
     margin: 0;
-    font-size: 64px;
-    font-weight: 800;
+    font-size: 55px;
+    font-weight: 700;
     line-height: 1.05;
 }
 
 .promo-product {
     margin: 0 0 14px 0;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 15px;
 }
 
 .promo-meta {
@@ -190,12 +188,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #fff;
-    color: #2E7D32;
-    font-size: 12px;
+    width: 24px;          /* Width of the circle */
+    height: 24px;         /* Height of the circle (must match width for a perfect circle) */
+    border-radius: 50%;   /* Makes it a circle */
+    background-color: #ffffff; /* White background */
+    color: #2E7D32;       /* Green icon color */
+    font-size: 14px;      /* Adjust size of the icon itself */
+    flex-shrink: 0;       /* Prevents the circle from squishing */
 }
 
 /* --- 3. Buy 1 Take 1 banner (bottom right) --- */
@@ -214,7 +213,7 @@
 .promo-bogo-title {
     margin: 0;
     font-size: 40px;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.05;
     text-transform: uppercase;
 }
