@@ -89,7 +89,7 @@
 .promo-btn {
     display: inline-block;
     align-self: flex-start;
-    background-color: #2E7D32;
+    background-color: #21834f;
     color: #fff;
     padding: 10px 24px;
     border-radius: 999px;
@@ -334,5 +334,100 @@
 
     .all-categories-title {
         font-size: 24px;
+    }
+}
+
+
+/* MUST HAVE SECTION */
+.must-have-section {
+    margin-top: 50px;
+    width: 100vw;
+    max-width: none;
+
+    /* Break out of a Bootstrap container */
+    margin-left: calc(50% - 50vw);
+
+    min-height: 420px;
+    padding: 60px 0;
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(0, 40, 20, 0.75),
+            rgba(0, 40, 20, 0.10)
+        ),
+        url('../images/categories/mustHaveBg.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+}
+
+.must-have-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.must-have-text {
+    max-width: 550px;
+    color: white;
+}
+
+.must-have-text h2 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.must-have-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.must-have-btn {
+    display: inline-block;
+    background-color: #21834f;
+    color: white;
+    text-decoration: none;
+
+    padding: 12px 28px;
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.must-have-btn:hover {
+    background-color: #146c43;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .must-have-section {
+        min-height: 350px;
+        background-position: center;
+    }
+
+    .must-have-content {
+        padding: 0 25px;
+    }
+
+    .must-have-text h2 {
+        font-size: 30px;
+    }
+
+    .must-have-text p {
+        font-size: 14px;
     }
 }
