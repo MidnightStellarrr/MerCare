@@ -14,3 +14,6 @@ def categoriesPage(request):
 
 def navBar_noLogin(request):
     return render(request, 'components/navBar_noLogin.html')
+
+def footer(request):
+    return render(request, 'components/footer.html')
