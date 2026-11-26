@@ -1,83 +1,64 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-</head>
-<body>
-    <!-- Footer Section -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            
-            <!-- Left Side: Brand & Socials -->
-            <div class="footer-brand">
-                <!-- Logo -->
-                <a href="landingPage.html" class="footer-logo-link">
-                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="footer-logo">
-                </a>
-                
-                <!-- Tagline -->
-                <p class="footer-tagline">Your health, delivered locally.</p>
-                
-                <!-- Socials (Using Bootstrap Icons) -->
-                <div class="footer-socials">
-                    <a href="#" class="social-circle" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="social-circle" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="social-circle" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                </div>
-            </div>
+<!-- Remove the <html>, <head>, and <body> tags entirely -->
 
-            <!-- Right Side: Links -->
-            <div class="footer-links-grid">
-                
-                <div class="footer-column">
-                    <h4>Main</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Shop</h4>
-                    <ul>
-                        <li><a href="categories.html">Categories</a></li>
-                        <li><a href="featured.html">Featured Products</a></li>
-                        <li><a href="pharmacies.html">Pharmacies Near Me</a></li>
-                        <li><a href="search.html">Find Medicine</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>For Pharmacies</h4>
-                    <ul>
-                        <li><a href="register-pharmacy.html">Register</a></li>
-                        <li><a href="benefits.html">Benefits</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="help.html">Help Center</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- Left Side: Brand & Socials -->
+        <div class="footer-brand">
+            <a href="/" class="footer-logo-link">
+                <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="footer-logo">
+            </a>
+            <p class="footer-tagline">Your health, delivered locally.</p>
+            <div class="footer-socials">
+                <a href="#" class="social-circle" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-circle" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="social-circle" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             </div>
         </div>
 
-        <!-- Bottom Divider and Copyright -->
-        <div class="footer-bottom">
-            <hr class="footer-divider">
-            <p class="copyright">&copy; 2025 MerCare. All rights reserved.</p>
+        <!-- Right Side: Links -->
+        <div class="footer-links-grid">
+            <div class="footer-column">
+                <h4>Main</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Featured Products</a></li>
+                    <li><a href="#">Pharmacies Near Me</a></li>
+                    <li><a href="#">Find Medicine</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>For Pharmacies</h4>
+                <ul>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Benefits</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </footer>
-</body>
-</html>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+        <hr class="footer-divider">
+        <p class="copyright">&copy; 2025 MerCare. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Remove the closing </body> and </html> tags -->
