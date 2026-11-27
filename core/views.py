@@ -17,3 +17,6 @@ def navBar_noLogin(request):
 
 def footer(request):
     return render(request, 'components/footer.html')
+
+def maternityCare(request):
+    return render(request, 'byCategory/maternityCare.html')
