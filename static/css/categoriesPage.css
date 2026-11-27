@@ -130,14 +130,6 @@
     font-size: 15px;
 }
 
-/* --- 2. Sale banner (top right) --- */
-.promo-sale::before {
-    background: linear-gradient(270deg,
-        rgba(139, 92, 246, 0.92) 0%,
-        rgba(168, 85, 247, 0.65) 45%,
-        rgba(168, 85, 247, 0) 80%);
-}
-
 .promo-sale .promo-content {
     align-items: flex-end;          /* right-align everything */
     text-align: right;
@@ -200,8 +192,8 @@
 /* --- 3. Buy 1 Take 1 banner (bottom right) --- */
 .promo-bogo::before {
     background: linear-gradient(90deg,
-        rgba(190, 235, 60, 0.95) 0%,
-        rgba(210, 240, 70, 0.7) 45%,
+        rgba(237, 108, 16, 0.95) 0%,
+        rgba(243, 255, 189, 0.7) 45%,
         rgba(210, 240, 70, 0) 80%);
 }
 
