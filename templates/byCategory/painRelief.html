@@ -1,11 +1,285 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
     <title>Pain Relief & Fever - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/painRelief.css' %}">
+    <!-- Make sure Bootstrap Icons is loaded here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}"> 
 </head>
 <body>
-    
+    {% include 'components/navBar_noLogin.html' %}
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb-divider"></span>
+        <a href="{% url 'categoriesPage' %}">Categories</a>
+        <span class="breadcrumb-divider"></span>
+        <span class="breadcrumb-current">Pain Relief & Fever</span>
+    </nav>    
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="maternity-container">
+        
+        <!-- Page Title -->
+        <h1 class="maternity-page-title">Pain Relief &amp; Fever</h1>
+
+        <!-- Category Promo Banner -->
+        <section class="maternity-promo">
+            <div class="maternity-promo-content">
+                <h2 class="maternity-promo-title">Melt Away Daily Neck<br>& Shoulder Tension</h2>
+                <p class="maternity-promo-subtitle">Ergonomically curved to fit your neck, delivering gentle warmth and deep-tissue relaxation right when you need it most.</p>
+                <a href="#" class="maternity-promo-btn">Shop Pain Relief & Fever</a>
+            </div>
+        </section>
+
+        <!-- Top Sellers Section -->
+        <section class="top-sellers-section">
+            <h2 class="top-sellers-title">Top Sellers in Baby &amp; Maternal Care</h2>
+
+            <div class="top-sellers-grid">
+                <!-- 1. Top Seller -->
+                <a href="#" class="top-seller-card">
+                    <div class="top-seller-img-wrap">
+                        <img src="{% static 'images/painRelief-byCat/Extra-Strength_topSeller.jpg' %}" alt="Pampers Baby Dry">
+                    </div>
+                    <h3 class="top-seller-label">Best Seller</h3>
+                </a>
+
+                <!-- 2. Top Seller -->
+                <a href="#" class="top-seller-card">
+                    <div class="top-seller-img-wrap">
+                        <img src="{% static 'images/painRelief-byCat/muscleStimulator_topSeller.jpg' %}" alt="Cetaphil Baby Lotion">
+                    </div>
+                    <h3 class="top-seller-label">Top Rated</h3>
+                </a>
+
+                <!-- 3. Top Seller -->
+                <a href="#" class="top-seller-card">
+                    <div class="top-seller-img-wrap">
+                        <img src="{% static 'images/painRelief-byCat/neckMassage_topSeller.jpg' %}" alt="Human Heart Nature Baby Wash">
+                    </div>
+                    <h3 class="top-seller-label">Highly Recommended</h3>
+                </a>
+
+                <!-- 4. Top Seller -->
+                <a href="#" class="top-seller-card">
+                    <div class="top-seller-img-wrap">
+                        <img src="{% static 'images/painRelief-byCat/Patch_topSeller.jpg' %}" alt="Bio-Oil Skincare Oil">
+                    </div>
+                    <h3 class="top-seller-label">Customer Favorite</h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- Product Listing Section -->
+        <section class="product-listing-layout">
+            
+            <!-- SIDEBAR FILTERS -->
+            <aside class="filter-sidebar">
+                <h2 class="filter-title">Filter Options</h2>
+
+                <!-- By Categories -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">By Categories</h3>
+                    <ul class="filter-list">
+                        <li><a href="#" class="active">All</a></li>
+                        <li><a href="#">Headache & Migraine Relief</a></li>
+                        <li><a href="#">Massage & Therapy Devices</a></li>
+                        <li><a href="#">Fever Reducers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Pharmacy -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Pharmacy</h3>
+                    <ul class="filter-list checkbox-list">
+                        <li><label><input type="checkbox" checked> Select All</label></li>
+                        <li><label><input type="checkbox"> Mercury Drug - Quezon Ave</label></li>
+                        <li><label><input type="checkbox"> Watsons - SM North</label></li>
+                        <li><label><input type="checkbox"> South Star Drug - Cubao</label></li>
+                        <li><label><input type="checkbox"> Generic Pharmacy - Project 8</label></li>
+                        <li><label><input type="checkbox"> MedExpress - Timog</label></li>
+                    </ul>
+                    
+                    <div class="search-pharmacy-wrap">
+                        <label class="search-pharmacy-label">Search More Pharmacies:</label>
+                        <div class="search-pharmacy-input">
+                            <i class="bi bi-search"></i>
+                            <input type="text" placeholder="Search Pharmacy...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Price</h3>
+                    <div class="price-values">
+                        <span>₱0.00</span>
+                        <span>100.00</span>
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="price-range">
+                </div>
+
+                <!-- Distance -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Distance</h3>
+                    <div class="price-values">
+                        <span>1 km</span>
+                        <span>20 km</span>
+                    </div>
+                    <input type="range" min="1" max="20" value="5" class="price-range">
+                </div>
+
+                <!-- Delivery -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Delivery</h3>
+                    <ul class="filter-list checkbox-list">
+                        <li><label><input type="checkbox"> Free Delivery</label></li>
+                        <li><label><input type="checkbox"> Paid Delivery</label></li>
+                        <li><label><input type="checkbox"> No Delivery</label></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- PRODUCT GRID -->
+            <div class="product-results">
+                
+                <!-- Top Bar (Showing results + Sort) -->
+                <div class="results-topbar">
+                    <span class="results-count">Showing 1-24 of 156</span>
+                    <div class="sort-dropdown">
+                        <label>Sort:</label>
+                        <select>
+                            <option>Popularity</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Active Filters -->
+                <div class="active-filters">
+                    <span class="filter-pill">In Stock <i class="bi bi-x"></i></span>
+                    <span class="filter-pill">Within 3 km <i class="bi bi-x"></i></span>
+                    <button class="clear-all-btn">Clear All</button>
+                </div>
+
+                <!-- The Grid -->
+                <div class="results-grid">
+
+                    <!-- Product 1 -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/maternityProduct_7.jpg' %}" alt="Enfamil A+">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Fever Reducers</span>
+                            <h3 class="product-name">Biogesic 500mg Tablet</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱6.50</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Product 2 -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/maternityProduct_8.jpg' %}" alt="Belo Baby Talc-Free Powder">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Fever Reducers</span>
+                            <h3 class="product-name">Neozep Forte 500mg/10mg Tablet</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱7.50</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Product 3 -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/maternityProduct_9.jpg' %}" alt="MamyPoko Pants">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Muscle & Body Pain</span>
+                            <h3 class="product-name">Alaxan FR 200mg/325mg Capsule</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱9.00</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Product 4 (Active State Example) -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/topSeller_4.jpg' %}" alt="Bio-Oil">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Headache & Migraine Relief</span>
+                            <h3 class="product-name">Medicol Advance 400mg Softgel Capsule</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱12.00</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Product 5 -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/maternityProduct_6.jpg' %}" alt="Johnson's Baby Shampoo">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Fever Reducers</span>
+                            <h3 class="product-name">Tempra 120mg/5ml Syrup</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱115.00</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Product 6 -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/maternityProduct_5.jpg' %}" alt="Avent Natural Baby Bottle">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Muscle & Body Pain</span>
+                            <h3 class="product-name">Katinko Ointment (10g)</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱45.00</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+    {% include 'components/footer.html' %}
 </body>
 </html>
