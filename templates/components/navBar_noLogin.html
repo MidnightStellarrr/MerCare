@@ -39,15 +39,17 @@
                     aria-label="Search products">
             </form>
 
-            <!-- Authentication Buttons -->
-            <div class="mercare-auth-buttons">
-                <a href="#" class="mercare-register-btn">
-                    Register
-                </a>
-
-                <a href="#" class="mercare-login-btn">
-                    Login
-                </a>
+            <div class="nav-actions">
+                <a href="{% url 'login' %}" class="btn btn-outline">Log In</a>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle">
+                        Register <span class="caret">▾</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'registerCustomer' %}">Register as Customer</a></li>
+                        <li><a href="registerPharmacy.html">Register as Pharmacy</a></li>
+                    </ul>
+                </div>
             </div>
 
         </div>
