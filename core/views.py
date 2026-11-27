@@ -20,3 +20,9 @@ def footer(request):
 
 def maternityCare(request):
     return render(request, 'byCategory/maternityCare.html')
+
+def painRelief(request):
+    return render(request, 'byCategory/painRelief.html')
+
+def vitaminsSupplements(request):
+    return render(request, 'byCategory/vitaminsSupplements.html')
