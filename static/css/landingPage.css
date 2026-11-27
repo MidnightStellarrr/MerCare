@@ -212,7 +212,7 @@ html, body {
 
 /* ===== HERO SECTION ===== */
 .hero-image {
-    background-image: url("../images/landingPage/landing_page_headerBg.jpg");
+    background-image: url("../images/landingPage/landing_page_headerBg.png");
     height: 650px; 
     background-position: center;
     background-repeat: no-repeat;
