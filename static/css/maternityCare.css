@@ -1,15 +1,17 @@
 html, body {
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Breadcrumb */
+/* Breadcrumb (Keep your existing code) */
 .breadcrumb {
     display: flex;
     align-items: center;
     gap: 14px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px 24px 20px 24px;   /* was 0 24px; adds the same 16px top / 20px bottom */
+    padding: 16px 24px 20px 24px; 
     font-size: 14px;
 }
 
@@ -32,4 +34,122 @@ html, body {
 .breadcrumb-current {
     color: #000;
     font-weight: 700;
+}
+
+/* ===== MATERNITY CARE PAGE ===== */
+
+/* NEW: Main Container to align everything */
+.maternity-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 60px 24px; /* Aligns with navbar */
+}
+
+/* Page Title */
+.maternity-page-title {
+    font-size: 36px; /* Matched to your reference image */
+    font-weight: 700;
+    color: #000;
+    margin: 20px 0 24px 0; /* Removed top margin so it sits right under breadcrumbs */
+}
+
+/* Promo Banner Container */
+.maternity-promo {
+    position: relative;
+    width: 100%;
+    height: 350px; 
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: #e6e6e6; 
+    
+    /* Using the static tag path */
+    background-image: url('/static/images/maternalCare-byCat/maternalCare.jpg'); 
+    background-size: cover;
+    background-position: center left;
+    background-repeat: no-repeat;
+}
+
+/* Dark gradient overlay */
+.maternity-promo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+}
+
+/* Content Wrapper (Right Aligned) */
+.maternity-promo-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end; 
+    text-align: right;
+    box-sizing: border-box;
+}
+
+/* Typography */
+.maternity-promo-title {
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0 0 16px 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.maternity-promo-subtitle {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    max-width: 350px; 
+    margin: 0 0 30px 0;
+    line-height: 1.5;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+/* Green Button */
+.maternity-promo-btn {
+    display: inline-block;
+    background-color: #21834f;
+    color: #ffffff;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.maternity-promo-btn:hover {
+    background-color: #1B5E20;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .maternity-promo {
+        height: auto;
+        min-height: 400px;
+    }
+    
+    .maternity-promo::before {
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+    }
+
+    .maternity-promo-content {
+        padding: 40px 24px;
+        align-items: center; 
+        text-align: center;
+        justify-content: flex-end; 
+    }
+
+    .maternity-promo-title {
+        font-size: 36px;
+    }
 }
