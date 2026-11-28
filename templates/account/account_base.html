@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
+    <title>{% block title %}Your Account{% endblock %} - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+
+    {% include 'components/navBar_noLogin.html' %}
+
+    <main class="account-container">
+
+        <h1 class="account-title">Your Account</h1>
+        <p class="account-greeting">Hello, {{ user.first_name|default:user.email }}</p>
+
+        <div class="account-layout">
+
+            <!-- Sidebar -->
+            <aside class="account-sidebar">
+                <ul class="account-menu">
+                    <li>
+                        <a href="{% url 'account_orders' %}" class="{% if active_page == 'orders' %}active{% endif %}">
+                            <svg viewBox="0 0 24 24"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            My Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="{% if active_page == 'profile' %}active{% endif %}">
+                            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="{% if active_page == 'cart' %}active{% endif %}">
+                            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            My Cart
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="{% if active_page == 'wishlist' %}active{% endif %}">
+                            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            Wishlists
+                        </a>
+                    </li>
+                </ul>
+
+                <hr class="account-divider">
+
+                <form action="{% url 'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="account-logout">
+                        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        Logout
+                    </button>
+                </form>
+            </aside>
+
+            <!-- Page content -->
+            <section class="account-content">
+                {% block account_content %}{% endblock %}
+            </section>
+
+        </div>
+    </main>
+
+    {% include 'components/footer.html' %}
+
+</body>
+</html>

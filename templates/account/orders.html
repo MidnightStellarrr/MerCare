@@ -1,0 +1,56 @@
+{% extends 'account/account_base.html' %}
+{% block title %}My Orders{% endblock %}
+
+{% block account_content %}
+
+    <!-- Status tabs -->
+    <nav class="order-tabs" aria-label="Order status">
+        {% for key, label in tabs %}
+            <a href="?status={{ key }}" class="order-tab {% if key == active_status %}active{% endif %}">{{ label }}</a>
+        {% endfor %}
+    </nav>
+
+    <!-- Orders -->
+    {% for order in orders %}
+        <article class="order-card">
+            <p class="order-number">Order #: {{ order.order_number }}</p>
+
+            <div class="order-row">
+                <div class="order-img">
+                    {% if order.product.image %}
+                        <img src="{{ order.product.image.url }}" alt="{{ order.product.name }}">
+                    {% endif %}
+                </div>
+
+                <div class="order-info">
+                    <h3 class="order-name">{{ order.product.name }}</h3>
+                    <p class="order-price">
+                        ₱{{ order.total|floatformat:"2g" }}
+                        {% if order.quantity > 1 %}<span class="order-qty">× {{ order.quantity }}</span>{% endif %}
+                    </p>
+                    <p class="order-meta">
+                        <span class="meta-item"><span class="dot"></span>{{ order.pharmacy.name }}</span>
+                        <span class="meta-item"><span class="dot"></span>{{ order.get_fulfillment_display }}</span>
+                    </p>
+                </div>
+
+                <div class="order-actions">
+                    {% if order.status == 'to_pay_onsite' %}
+                        <form action="{% url 'cancel_order' order.id %}" method="POST"
+                                onsubmit="return confirm('Cancel this reservation?');">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-pill">Cancel Reservation</button>
+                        </form>
+                    {% endif %}
+                    <a href="#" class="btn-pill">View Details</a>
+                </div>
+            </div>
+        </article>
+    {% empty %}
+        <div class="orders-empty">
+            <p>No orders here yet.</p>
+            <a href="{% url 'categoriesPage' %}" class="btn-pill">Browse Categories</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

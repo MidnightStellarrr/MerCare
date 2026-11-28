@@ -1,0 +1,289 @@
+/* ===== ACCOUNT PAGES ===== */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+}
+
+.account-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 24px 60px 24px;
+}
+
+.account-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+}
+
+.account-greeting {
+    font-size: 20px;
+    margin: 0 0 28px 0;
+}
+
+.account-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* --- Sidebar --- */
+.account-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.account-menu a,
+.account-logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    color: #000;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.account-menu a:hover,
+.account-logout:hover {
+    background: #F1F8E9;
+}
+
+.account-menu a.active {
+    background: #2E7D32;
+    color: #fff;
+    font-weight: 700;
+}
+
+.account-menu svg,
+.account-logout svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.account-divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 14px 0;
+}
+
+/* --- Status tabs --- */
+.order-tabs {
+    display: inline-flex;
+    gap: 2px;
+    padding: 4px;
+    margin-bottom: 20px;
+    background: #e3e3e3;
+    border-radius: 10px;
+}
+
+.order-tab {
+    padding: 7px 16px;
+    border-radius: 8px;
+    color: #999;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.order-tab:hover {
+    color: #333;
+}
+
+.order-tab.active {
+    background: #fff;
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Order cards --- */
+.order-card {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.order-number {
+    margin: 0 0 12px 0;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.order-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.order-img {
+    width: 150px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #f4ede3;
+    overflow: hidden;
+}
+
+.order-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-info {
+    flex: 1;
+    align-self: flex-start;
+    min-width: 0;
+}
+
+.order-name {
+    margin: 12px 0 8px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.order-price {
+    margin: 0 0 12px 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.order-qty {
+    margin-left: 6px;
+    font-weight: 400;
+    color: #777;
+}
+
+.order-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin: 0;
+    font-size: 11px;
+    color: #444;
+}
+
+.meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #d4d4d4;
+}
+
+/* --- Buttons --- */
+.order-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.order-actions form {
+    margin: 0;
+}
+
+.btn-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 999px;
+    background: #2E7D32;
+    color: #fff;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-pill:hover {
+    background: #1B5E20;
+}
+
+/* --- Empty state --- */
+.orders-empty {
+    padding: 50px 20px;
+    text-align: center;
+    border: 1px dashed #ccc;
+    border-radius: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.orders-empty .btn-pill {
+    margin-top: 6px;
+    padding: 9px 20px;
+    font-size: 12px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 800px) {
+    .account-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .account-title {
+        font-size: 32px;
+    }
+
+    .order-row {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .order-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-img {
+        width: 100%;
+        height: 160px;
+    }
+
+    .order-tabs {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .order-tab {
+        white-space: nowrap;
+    }
+}
