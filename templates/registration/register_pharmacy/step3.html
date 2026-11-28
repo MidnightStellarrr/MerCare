@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
+    <title>Verify Your Pharmacy Licenses - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/registerPharmacy.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+
+        <!-- Left Side: Image Banner -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <a href="{% url 'home' %}" class="login-logo-link">
+                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="login-logo">
+                </a>
+
+                <div class="login-hero-text">
+                    <h1>Partner with Us to Reach More Patients</h1>
+                    <p>Connect your licensed storefront to local customers, streamline prescription orders, and grow your sales with zero hassle.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="login-right">
+            <div class="login-form-wrapper">
+
+                <h2 class="login-title">Verify Your<br>Pharmacy Licenses</h2>
+                <p class="login-subtitle">Upload your FDA LTO, PRC pharmacist license, and business permits to keep our platform safe and compliant.</p>
+
+                <!-- Progress Stepper: steps 1-2 done, step 3 active -->
+                <ol class="stepper" aria-label="Registration progress">
+                    <li class="step done"><span class="step-circle">1</span></li>
+                    <li class="step done"><span class="step-circle">2</span></li>
+                    <li class="step active" aria-current="step"><span class="step-circle">3</span></li>
+                    <li class="step"><span class="step-circle">4</span></li>
+                </ol>
+
+                <!-- enctype is REQUIRED for file uploads -->
+                <form action="#" method="POST" enctype="multipart/form-data" class="login-form">
+                    {% csrf_token %}
+
+                    <div class="input-group">
+                        <label for="lto_number">FDA License to Operate (LTO) Number</label>
+                        <input type="text" id="lto_number" name="lto_number" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lto_expiry">FDA LTO Expiration Date</label>
+                        <input type="date" id="lto_expiry" name="lto_expiry" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="lto_copy">FDA LTO Certificate Copy</label>
+                        <input type="file" id="lto_copy" name="lto_copy" class="file-input"
+                            accept=".pdf,.jpg,.jpeg,.png" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="prc_id">Pharmacist PRC ID Copy</label>
+                        <input type="file" id="prc_id" name="prc_id" class="file-input"
+                            accept=".pdf,.jpg,.jpeg,.png" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="business_permit">Mayor's / Business Permit Copy</label>
+                        <input type="file" id="business_permit" name="business_permit" class="file-input"
+                            accept=".pdf,.jpg,.jpeg,.png" required>
+                    </div>
+
+                    <div class="form-buttons">
+                        <a href="{% url 'step2' %}" class="btn-back">Back</a>
+                        <button type="submit" class="btn-login">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Client-side file check (convenience only; validate again on the server) -->
+    <script>
+        const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+        const ALLOWED = ['application/pdf', 'image/jpeg', 'image/png'];
+
+        document.querySelectorAll('.file-input').forEach(function (input) {
+            input.addEventListener('change', function () {
+                const file = input.files[0];
+                input.setCustomValidity('');
+
+                if (!file) return;
+
+                if (!ALLOWED.includes(file.type)) {
+                    input.setCustomValidity('Only PDF, JPG, or PNG files are allowed.');
+                } else if (file.size > MAX_SIZE) {
+                    input.setCustomValidity('File is too large. Maximum size is 5MB.');
+                }
+
+                if (!input.checkValidity()) {
+                    input.reportValidity();
+                    input.value = ''; // clear the bad file
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

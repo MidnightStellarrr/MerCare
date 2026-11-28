@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
+    <title>Create Merchant Account - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/registerPharmacy.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+
+        <!-- Left Side: Image Banner -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <a href="{% url 'home' %}" class="login-logo-link">
+                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="login-logo">
+                </a>
+
+                <div class="login-hero-text">
+                    <h1>Partner with Us to Reach More Patients</h1>
+                    <p>Connect your licensed storefront to local customers, streamline prescription orders, and grow your sales with zero hassle.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="login-right">
+            <div class="login-form-wrapper">
+
+                <h2 class="login-title">Create Your<br>Merchant Account</h2>
+                <p class="login-subtitle">Enter the authorized representative's details to manage your pharmacy storefront and orders.</p>
+
+                <!-- Progress Stepper (move "active" to the current step on steps 2-4) -->
+                <ol class="stepper" aria-label="Registration progress">
+                    <li class="step active" aria-current="step"><span class="step-circle">1</span></li>
+                    <li class="step"><span class="step-circle">2</span></li>
+                    <li class="step"><span class="step-circle">3</span></li>
+                    <li class="step"><span class="step-circle">4</span></li>
+                </ol>
+
+                <!-- Point action at your step 2 URL / view later -->
+                <form action="#" method="POST" class="login-form">
+                    {% csrf_token %}
+
+                    <div class="input-group">
+                        <label for="fullname">Fullname</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="role">Role/Position</label>
+                        <select id="role" name="role" required>
+                            <option value="" disabled selected hidden>Owner</option>
+                            <option value="owner">Owner</option>
+                            <option value="pharmacist">Pharmacist-in-Charge</option>
+                            <option value="manager">Manager</option>
+                            <option value="representative">Authorized Representative</option>
+                        </select>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Phone no.</label>
+                            <input type="tel" id="phone" name="phone"  required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-actions terms-row">
+                        <label class="remember-me">
+                            <input type="checkbox" name="terms" required>
+                            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                        </label>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-login">Next</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

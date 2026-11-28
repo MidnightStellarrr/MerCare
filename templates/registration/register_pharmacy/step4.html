@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
+    <title>Payout &amp; Settlement - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/registerPharmacy.css' %}">
+</head>
+<body>
+
+    <div class="login-container">
+
+        <!-- Left Side: Image Banner -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <a href="{% url 'home' %}" class="login-logo-link">
+                    <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="login-logo">
+                </a>
+
+                <div class="login-hero-text">
+                    <h1>Partner with Us to Reach More Patients</h1>
+                    <p>Connect your licensed storefront to local customers, streamline prescription orders, and grow your sales with zero hassle.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="login-right">
+            <div class="login-form-wrapper">
+
+                <h2 class="login-title">Payout &amp; Settlement</h2>
+                <p class="login-subtitle">Choose how you'd like to receive payments for your orders.</p>
+
+                <!-- Progress Stepper: steps 1-3 done, step 4 active -->
+                <ol class="stepper" aria-label="Registration progress">
+                    <li class="step done"><span class="step-circle">1</span></li>
+                    <li class="step done"><span class="step-circle">2</span></li>
+                    <li class="step done"><span class="step-circle">3</span></li>
+                    <li class="step active" aria-current="step"><span class="step-circle">4</span></li>
+                </ol>
+
+                <form action="#" method="POST" enctype="multipart/form-data" class="login-form">
+                    {% csrf_token %}
+
+                    <div class="input-group">
+                        <label for="settlement_method">Settlement Method</label>
+                        <select id="settlement_method" name="settlement_method" required>
+                            <option value="" disabled selected hidden>Select settlement method</option>
+                            <option value="bank_transfer">Bank Transfer (PESONet / InstaPay)</option>
+                            <option value="gcash">GCash Merchant</option>
+                            <option value="maya">Maya Business</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="provider">Bank / E-Wallet Provider</label>
+                        <select id="provider" name="provider" required disabled>
+                            <option value="" disabled selected hidden>Select settlement method first</option>
+                        </select>
+                    </div>
+
+                    <!-- ASSUMED fields (your list was cut off at "d)"): edit or remove -->
+                    <div class="input-group">
+                        <label for="account_name">Account Name</label>
+                        <input type="text" id="account_name" name="account_name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="account_number">Account Number / Mobile Number</label>
+                        <input type="text" id="account_number" name="account_number" inputmode="numeric" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="payout_proof">
+                            Proof of Bank Account / Voided Check / E-Wallet QR
+                            <span class="optional-tag">(Optional)</span>
+                        </label>
+                        <input type="file" id="payout_proof" name="payout_proof" class="file-input"
+                               accept=".pdf,.jpg,.jpeg,.png">
+                        <small class="field-hint">Speeds up finance verification. PDF, JPG, or PNG, max 5MB.</small>
+                    </div>
+
+                    <div class="consent-list">
+                        <label class="remember-me">
+                            <input type="checkbox" name="rx_compliance" required>
+                            <span>I confirm that a licensed pharmacist will review and validate all prescription (Rx) orders prior to dispensing.</span>
+                        </label>
+
+                        <label class="remember-me">
+                            <input type="checkbox" name="merchant_terms" required>
+                            <span>I agree to the <a href="#">Merchant Terms of Service</a> and <a href="#">Data Privacy Policy</a>.</span>
+                        </label>
+                    </div>
+
+                    <div class="form-buttons">
+                        <a href="{% url 'step3' %}" class="btn-back">Back</a>
+                        <button type="submit" class="btn-login">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        /* ---- Provider options depend on settlement method ---- */
+        const PROVIDERS = {
+            bank_transfer: ['BDO', 'BPI', 'Metrobank', 'UnionBank', 'Landbank'],
+            gcash: ['GCash'],
+            maya: ['Maya']
+        };
+
+        const methodSelect = document.getElementById('settlement_method');
+        const providerSelect = document.getElementById('provider');
+
+        methodSelect.addEventListener('change', function () {
+            const options = PROVIDERS[methodSelect.value] || [];
+
+            providerSelect.innerHTML = '';
+
+            const placeholder = document.createElement('option');
+            placeholder.value = '';
+            placeholder.textContent = 'Select provider';
+            placeholder.disabled = true;
+            placeholder.selected = true;
+            placeholder.hidden = true;
+            providerSelect.appendChild(placeholder);
+
+            options.forEach(function (name) {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = name;
+                providerSelect.appendChild(opt);
+            });
+
+            // Only one choice (GCash / Maya): select it automatically
+            if (options.length === 1) {
+                providerSelect.value = options[0];
+            }
+
+            providerSelect.disabled = false;
+        });
+
+        /* ---- Client-side file check (convenience only; validate on the server too) ---- */
+        const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+        const ALLOWED = ['application/pdf', 'image/jpeg', 'image/png'];
+
+        document.querySelectorAll('.file-input').forEach(function (input) {
+            input.addEventListener('change', function () {
+                const file = input.files[0];
+                input.setCustomValidity('');
+
+                if (!file) return;
+
+                if (!ALLOWED.includes(file.type)) {
+                    input.setCustomValidity('Only PDF, JPG, or PNG files are allowed.');
+                } else if (file.size > MAX_SIZE) {
+                    input.setCustomValidity('File is too large. Maximum size is 5MB.');
+                }
+
+                if (!input.checkValidity()) {
+                    input.reportValidity();
+                    input.value = '';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

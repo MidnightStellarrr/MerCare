@@ -1,0 +1,419 @@
+/* ===== PHARMACY REGISTRATION (shared by steps 1-4) ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* --- Left Side (Image) --- */
+.login-left {
+    flex: 1;
+    /* Change to your pharmacy photo's filename */
+    background-image:
+        linear-gradient(rgba(46, 125, 50, 0.25), rgba(27, 94, 32, 0.45)),
+        url('/static/images/authentication/customerAuthentication.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 24px;
+    margin: 20px;
+}
+
+.login-left-content {
+    position: absolute;
+    inset: 0;
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-logo {
+    width: 90px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+.login-hero-text {
+    color: #fff;
+}
+
+.login-hero-text h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 14px 0;
+    max-width: 420px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.login-hero-text p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 360px;
+    text-shadow: 0 1px 5px #666;
+}
+
+/* --- Right Side (Form) --- */
+.login-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.login-form-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 14px 0;
+    line-height: 1.15;
+}
+
+.login-subtitle {
+    font-size: 12px;
+    color: #333;
+    line-height: 1.4;
+    margin: 0 0 20px 0;
+}
+
+/* --- Progress Stepper --- */
+.stepper {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.step:last-child {
+    flex: none;
+}
+
+.step-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    color: #333;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* line after each circle (except the last) */
+.step:not(:last-child)::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #d9d9d9;
+    margin: 0 6px;
+}
+
+.step.active .step-circle,
+.step.done .step-circle {
+    background: #2E7D32;
+    color: #fff;
+}
+
+.step.done:not(:last-child)::after {
+    background: #2E7D32;
+}
+
+/* --- Form Inputs --- */
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 6px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px 18px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 13px;
+    font-family: inherit;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #2E7D32;
+}
+
+/* Select with custom arrow */
+.input-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+}
+
+/* Gray text while nothing is selected */
+.input-group select:invalid {
+    color: #aaa;
+}
+
+/* File upload inputs */
+.input-group input[type="file"] {
+    padding: 4px 6px;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+}
+
+.input-group input[type="file"]::file-selector-button {
+    background-color: #e8f5e9;
+    color: #2E7D32;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 14px;
+    margin-right: 10px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.input-group input[type="file"]::file-selector-button:hover {
+    background-color: #c8e6c9;
+}
+
+/* Date input: keep the same height as text inputs */
+.input-group input[type="date"] {
+    min-height: 38px;
+    color: #333;
+}
+
+/* Side-by-side inputs */
+.input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+/* --- Terms Checkbox (round) --- */
+.form-actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.terms-row {
+    justify-content: flex-start;
+    margin-top: 18px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #333;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.remember-me input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin: 0;
+    flex-shrink: 0;
+    border: 1px solid #999;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background: #2E7D32;
+    border-color: #2E7D32;
+    box-shadow: inset 0 0 0 2px #fff;
+}
+
+.remember-me a {
+    color: #000;
+    text-decoration: none;
+}
+
+.remember-me a:hover {
+    text-decoration: underline;
+}
+
+/* Back / Next button row */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-login {
+    margin-left: auto;          /* pushes it to the right, even when it's alone (step 1) */
+    min-width: 140px;
+    padding: 12px 32px;
+    border: none;               /* removes the border */
+    border-radius: 12px;
+    background-color: #2E7D32;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+    background-color: #1B5E20;
+}
+
+/* Back: stays on the left */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    padding: 12px 32px;
+    border: 1px solid #2E7D32;
+    border-radius: 12px;
+    background-color: #fff;
+    color: #2E7D32;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-back:hover {
+    background-color: #e8f5e9;
+}
+
+/* --- Footer text --- */
+.signup-text {
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+    margin: 24px 0 0 0;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.signup-text a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .login-left {
+        display: none;
+    }
+
+    .login-right {
+        padding: 40px 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .login-title {
+        font-size: 32px;
+    }
+}
+
+/* Optional label tag + helper text */
+.optional-tag {
+    font-weight: 400;
+    color: #888;
+}
+
+.field-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #777;
+}
+
+/* Stacked consent checkboxes (long text wraps, so align to top) */
+.consent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.consent-list .remember-me {
+    align-items: flex-start;
+}
+
+.consent-list .remember-me input[type="checkbox"] {
+    margin-top: 1px;
+}
+
+/* Disabled select (before a settlement method is chosen) */
+.input-group select:disabled {
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+}
