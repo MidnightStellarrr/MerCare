@@ -63,8 +63,7 @@ html, body {
     margin-bottom: 40px;
     background-color: #e6e6e6; 
     
-    /* Using the static tag path */
-    background-image: url('/static/images/maternalCare-byCat/maternalCare.jpg'); 
+    /* Background image is now handled in the HTML */
     background-size: cover;
     background-position: center left;
     background-repeat: no-repeat;

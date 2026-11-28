@@ -12,17 +12,28 @@ def registerCustomer(request):
 def categoriesPage(request):
     return render(request, 'categoriesPage.html')
 
-def navBar_noLogin(request):
-    return render(request, 'components/navBar_noLogin.html')
+def category_detail(request, category_slug):
+    # A dictionary to map URL slugs to display titles
+    category_titles = {
+        'pain-relief': 'Pain Relief & Fever',
+        'maternity-care': 'Baby and Maternity Care',
+        'vitamins': 'Vitamins & Supplements',
+        'first-aid': 'First Aid & Wound Care',
+        'personal-care': 'Personal Care & Hygiene',
+        'oral-care': 'Oral Care',
+        'medical-equipment': 'Medical Equipment',
+        'eye-ear-care': 'Eye and Ear Care',
+        'sports-nutrition': 'Sports Nutrition and Fitness',
+        'senior-care': 'Senior Care',
+    }
+    
+    # Get the title based on the URL, or default to 'Category'
+    category_title = category_titles.get(category_slug, 'Category')
 
-def footer(request):
-    return render(request, 'components/footer.html')
-
-def maternityCare(request):
-    return render(request, 'byCategory/maternityCare.html')
-
-def painRelief(request):
-    return render(request, 'byCategory/painRelief.html')
-
-def vitaminsSupplements(request):
-    return render(request, 'byCategory/vitaminsSupplements.html')
+    context = {
+        'category_slug': category_slug,
+        'category_title': category_title,
+    }
+    
+    # Note: We renamed the template from maternityCare.html to category_detail.html
+    return render(request, 'byCategory/category_detail.html', context)

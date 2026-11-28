@@ -75,87 +75,95 @@
             <h2 class="all-categories-title">Categories</h2>
 
             <div class="cat-grid">
-
-                <a href="{% url 'painRelief' %}" class="cat-item">
+                <!-- Pain Relief -->
+                <a href="{% url 'category_detail' 'pain-relief' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/painRelief_cat.jpg" alt="Pain Relief & Fever">
+                        <img src="{% static 'images/categories/painRelief_cat.jpg' %}" alt="Pain Relief & Fever">
                     </div>
                     <h3 class="cat-name">Pain Relief &amp; Fever</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="{% url 'maternityCare' %}" class="cat-item">
+                <!-- Maternity Care -->
+                <a href="{% url 'category_detail' 'maternity-care' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/maternity_cat.jpg" alt="Baby and Maternity Care">
+                        <img src="{% static 'images/categories/maternity_cat.jpg' %}" alt="Baby and Maternity Care">
                     </div>
                     <h3 class="cat-name">Baby and Maternity Care</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="{% url 'vitaminsSupplements' %}" class="cat-item">
+                <!-- Vitamins & Supplements -->
+                <a href="{% url 'category_detail' 'vitamins' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/vitamins_cat.jpg" alt="Vitamins & Supplements">
+                        <img src="{% static 'images/categories/vitamins_cat.jpg' %}" alt="Vitamins & Supplements">
                     </div>
                     <h3 class="cat-name">Vitamins &amp; Supplements</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- First Aid -->
+                <a href="{% url 'category_detail' 'first-aid' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/firstAid_cat.jpg" alt="First Aid & Wound Care">
+                        <img src="{% static 'images/categories/firstAid_cat.jpg' %}" alt="First Aid & Wound Care">
                     </div>
                     <h3 class="cat-name">First Aid &amp; Wound Care</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- Personal Care -->
+                <a href="{% url 'category_detail' 'personal-care' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/hygiene_cat.jpg" alt="Personal Care & Hygiene">
+                        <img src="{% static 'images/categories/hygiene_cat.jpg' %}" alt="Personal Care & Hygiene">
                     </div>
                     <h3 class="cat-name">Personal Care &amp; Hygiene</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- Oral Care -->
+                <a href="{% url 'category_detail' 'oral-care' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/oral_cat.jpg" alt="Oral Care">
+                        <img src="{% static 'images/categories/oral_cat.jpg' %}" alt="Oral Care">
                     </div>
                     <h3 class="cat-name">Oral Care</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- Medical Equipment -->
+                <a href="{% url 'category_detail' 'medical-equipment' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/medEquip_cat.jpg" alt="Medical Equipment">
+                        <img src="{% static 'images/categories/medEquip_cat.jpg' %}" alt="Medical Equipment">
                     </div>
                     <h3 class="cat-name">Medical Equipment</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- Eye and Ear Care -->
+                <a href="{% url 'category_detail' 'eye-ear-care' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/earEye_cat.jpg" alt="Eye and Ear Care">
+                        <img src="{% static 'images/categories/earEye_cat.jpg' %}" alt="Eye and Ear Care">
                     </div>
                     <h3 class="cat-name">Eye and Ear Care</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- Sports Nutrition -->
+                <a href="{% url 'category_detail' 'sports-nutrition' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/sports_cat.jpg" alt="Sports Nutrition and Fitness">
+                        <img src="{% static 'images/categories/sports_cat.jpg' %}" alt="Sports Nutrition and Fitness">
                     </div>
                     <h3 class="cat-name">Sports Nutrition and Fitness</h3>
                     <p class="cat-count">327 products</p>
                 </a>
 
-                <a href="#" class="cat-item">
+                <!-- Senior Care -->
+                <a href="{% url 'category_detail' 'senior-care' %}" class="cat-item">
                     <div class="cat-img-wrap">
-                        <img src="../static/images/categories/seniorCare_cat.jpg" alt="Senior Care">
+                        <img src="{% static 'images/categories/seniorCare_cat.jpg' %}" alt="Senior Care">
                     </div>
                     <h3 class="cat-name">Senior Care</h3>
                     <p class="cat-count">327 products</p>
                 </a>
-
             </div>
         </section>
 

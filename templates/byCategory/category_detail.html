@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'images/landingPage/mercare_logo.png' %}">
+    <!-- Dynamic Title -->
+    <title>{{ category_title }} - MerCare</title>
+    <link rel="stylesheet" href="{% static 'css/category_detail.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}"> 
+</head>
+<body>
+    {% include 'components/navBar_noLogin.html' %}
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="{% url 'home' %}">Home</a>
+        <span class="breadcrumb-divider"></span>
+        <a href="{% url 'categoriesPage' %}">Categories</a>
+        <span class="breadcrumb-divider"></span>
+        <span class="breadcrumb-current">{{ category_title }}</span>
+    </nav>    
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="maternity-container">
+        
+        <!-- Dynamic Page Title -->
+        <h1 class="maternity-page-title">{{ category_title }}</h1>
+
+        <!-- DYNAMIC PROMO BANNER -->
+        <section class="maternity-promo" 
+            {% if category_slug == 'pain-relief' %}
+                style="background-image: url('/static/images/painRelief-byCat/painRellief_Promo.jpg');"
+            {% elif category_slug == 'maternity-care' %}
+                style="background-image: url('/static/images/maternalCare-byCat/maternalCare.jpg');"
+            {% endif %}
+        >
+            <div class="maternity-promo-content">
+                
+                {% if category_slug == 'pain-relief' %}
+                    <h2 class="maternity-promo-title">Fast Relief<br>When You Need It</h2>
+                    <p class="maternity-promo-subtitle">Up to 15% off on pain relievers and fever reducers.</p>
+                    <a href="#" class="maternity-promo-btn">Shop Pain Relief</a>
+                    
+                {% elif category_slug == 'maternity-care' %}
+                    <h2 class="maternity-promo-title">Everything for Mom<br>& Baby</h2>
+                    <p class="maternity-promo-subtitle">Up to 25% off on diapers, wipes, and maternity essentials.</p>
+                    <a href="#" class="maternity-promo-btn">Shop Baby & Maternity</a>
+                    
+                {% else %}
+                    <!-- Fallback for the other 8 categories if you haven't added images yet -->
+                    <h2 class="maternity-promo-title">Shop {{ category_title }}</h2>
+                    <p class="maternity-promo-subtitle">Find the best products in this category.</p>
+                    <a href="#" class="maternity-promo-btn">Explore Now</a>
+                {% endif %}
+                
+            </div>
+        </section>
+
+        <!-- Dynamic Top Sellers Section -->
+        <section class="top-sellers-section">
+            <h2 class="top-sellers-title">Top Sellers in {{ category_title }}</h2>
+
+            <div class="top-sellers-grid">
+                
+                <!-- Show these 4 only for Maternity -->
+                {% if category_slug == 'maternity-care' %}
+                    <a href="#" class="top-seller-card">
+                        <div class="top-seller-img-wrap"><img src="{% static 'images/maternalCare-byCat/topSeller_1.jpg' %}" alt="Pampers"></div>
+                        <h3 class="top-seller-label">Top Rated</h3>
+                    </a>
+                    <a href="#" class="top-seller-card">
+                        <div class="top-seller-img-wrap"><img src="{% static 'images/maternalCare-byCat/topSeller_2.jpg' %}" alt="Cetaphil"></div>
+                        <h3 class="top-seller-label">Pediatrician Recommended</h3>
+                    </a>
+                    <a href="#" class="top-seller-card">
+                        <div class="top-seller-img-wrap"><img src="{% static 'images/maternalCare-byCat/topSeller_3.jpg' %}" alt="Human Heart Nature"></div>
+                        <h3 class="top-seller-label">Natural &amp; Organic</h3>
+                    </a>
+                    <a href="#" class="top-seller-card">
+                        <div class="top-seller-img-wrap"><img src="{% static 'images/maternalCare-byCat/topSeller_4.jpg' %}" alt="Bio-Oil"></div>
+                        <h3 class="top-seller-label">Maternity Essential</h3>
+                    </a>
+                
+                <!-- Show these 4 for Pain Relief (Make sure you have images for these!) -->
+                {% elif category_slug == 'pain-relief' %}
+                    <a href="#" class="top-seller-card">
+                        <div class="top-seller-img-wrap"><img src="{% static 'images/painRelief-byCat/Extra-Strength_topSeller.jpg' %}" alt="Biogesic"></div>
+                        <h3 class="top-seller-label">Best for Fever</h3>
+                    </a>
+                    <a href="#" class="top-seller-card">
+                        <div class="top-seller-img-wrap"><img src="{% static 'images/painRelief-byCat/Patch_topSeller.jpg' %}" alt="Salonpas"></div>
+                        <h3 class="top-seller-label">Muscle Relief</h3>
+                    </a>
+                    <!-- Add 2 more for pain relief -->
+                {% endif %}
+
+            </div>
+        </section>
+
+        <!-- Product Listing Section -->
+        <section class="product-listing-layout">
+            
+            <!-- SIDEBAR FILTERS -->
+            <aside class="filter-sidebar">
+                <h2 class="filter-title">Filter Options</h2>
+
+                <!-- By Categories -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">By Categories</h3>
+                    <ul class="filter-list">
+                        <li><a href="#" class="active">All</a></li>
+                        
+                        <!-- Dynamic Subcategories based on main category -->
+                        {% if category_slug == 'maternity-care' %}
+                            <li><a href="#">Baby Skin Care</a></li>
+                            <li><a href="#">Maternal Care</a></li>
+                            <li><a href="#">Baby Health</a></li>
+                            <li><a href="#">Baby Feeding</a></li>
+                            <li><a href="#">Diapers & Wipes</a></li>
+                        {% elif category_slug == 'pain-relief' %}
+                            <li><a href="#">Headache & Migraine</a></li>
+                            <li><a href="#">Fever Reducers</a></li>
+                            <li><a href="#">Muscle & Body Pain</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <!-- Pharmacy -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Pharmacy</h3>
+                    <!-- ... (Keep your existing pharmacy checkbox code here) ... -->
+                    <ul class="filter-list checkbox-list">
+                        <li><label><input type="checkbox" checked> Select All</label></li>
+                        <li><label><input type="checkbox"> Mercury Drug - Quezon Ave</label></li>
+                        <li><label><input type="checkbox"> Watsons - SM North</label></li>
+                    </ul>
+                    <div class="search-pharmacy-wrap">
+                        <label class="search-pharmacy-label">Search More Pharmacies:</label>
+                        <div class="search-pharmacy-input">
+                            <i class="bi bi-search"></i>
+                            <input type="text" placeholder="Search Pharmacy...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price & Distance (Keep as is) -->
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Price</h3>
+                    <div class="price-values"><span>₱0.00</span><span>100.00</span></div>
+                    <input type="range" min="0" max="100" value="50" class="price-range">
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Distance</h3>
+                    <div class="price-values"><span>1 km</span><span>20 km</span></div>
+                    <input type="range" min="1" max="20" value="5" class="price-range">
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-group-title">Delivery</h3>
+                    <ul class="filter-list checkbox-list">
+                        <li><label><input type="checkbox"> Free Delivery</label></li>
+                        <li><label><input type="checkbox"> Paid Delivery</label></li>
+                        <li><label><input type="checkbox"> No Delivery</label></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- PRODUCT GRID -->
+            <div class="product-results">
+                
+                <div class="results-topbar">
+                    <span class="results-count">Showing 1-24 of 156</span>
+                    <div class="sort-dropdown">
+                        <label>Sort:</label>
+                        <select>
+                            <option>Popularity</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="active-filters">
+                    <span class="filter-pill">In Stock <i class="bi bi-x"></i></span>
+                    <span class="filter-pill">Within 3 km <i class="bi bi-x"></i></span>
+                    <button class="clear-all-btn">Clear All</button>
+                </div>
+
+                <!-- The Grid (For now, hardcoded, but we will make this a Django loop later) -->
+                <div class="results-grid">
+
+                    <!-- Product 1 -->
+                    <a href="#" class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="{% static 'images/maternalCare-byCat/maternityProduct_7.jpg' %}" alt="Enfamil A+">
+                            <button class="wishlist-btn" title="Add to Wishlist"><i class="bi bi-heart"></i></button>
+                            <button class="add-btn" title="Add to Cart"><i class="bi bi-cart-plus"></i></button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Baby Feeding</span>
+                            <h3 class="product-name">Enfamil A+ Stage 1</h3>
+                            <div class="product-bottom">
+                                <span class="product-price">₱1,650.00</span>
+                                <span class="product-rating"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- ... (Keep the rest of your 9 products as they are for now) ... -->
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+    {% include 'components/footer.html' %}
+</body>
+</html>

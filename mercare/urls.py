@@ -8,9 +8,5 @@ urlpatterns = [
     path('login/', views.login_view, name='login'), 
     path('registerCustomer/', views.registerCustomer, name='registerCustomer'),
     path('categoriesPage/', views.categoriesPage, name='categoriesPage'),
-    path('navBar_noLogin/', views.navBar_noLogin, name='navBar_noLogin'),
-    path('footer/', views.footer, name='footer'),
-    path('maternityCare/', views.maternityCare, name='maternityCare'),
-    path('painRelief/', views.painRelief, name='painRelief'),
-    path('vitaminsSupplements/', views.vitaminsSupplements, name='vitaminsSupplements')
+    path('category/<str:category_slug>/', views.category_detail, name='category_detail'),
 ]
