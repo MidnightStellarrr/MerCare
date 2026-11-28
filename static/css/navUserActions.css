@@ -1,0 +1,180 @@
+/* ===== LOGGED-IN NAVBAR ACTIONS (shared by both navbars) ===== */
+.nav-actions.user-actions {
+    gap: 6px;
+}
+
+/* Icon buttons */
+.nav-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #2E7D32;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-icon:hover {
+    background-color: #F1F8E9;
+    color: #1B5E20;
+}
+
+.nav-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Red count bubble (for later: cart items, unread notifications) */
+.icon-badge {
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 999px;
+    background: #d32f2f;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profile pill: [photo] Name / email  ▾ */
+.profile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 6px;
+    padding: 5px 16px 5px 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.profile-toggle:hover {
+    border-color: #2E7D32;
+}
+
+/* Circle: shows the photo, or the first letter when there's no photo */
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2E7D32;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-pic img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    min-width: 0;
+    max-width: 150px;
+}
+
+.profile-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-email {
+    font-size: 0.75rem;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-toggle .caret {
+    color: #555;
+    font-size: 0.7rem;
+}
+
+/* Profile dropdown */
+.profile-menu .dropdown-menu {
+    top: 100%;
+    padding-top: 4px;
+}
+
+/* Also opens on tap/keyboard focus (hover doesn't exist on phones) */
+.profile-menu:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-logout,
+.mobile-logout {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #c62828;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.menu-logout:hover,
+.mobile-logout:hover {
+    background: #fdecea;
+}
+
+.mobile-logout {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+    .nav-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Phones: just the circle and arrow, no room for the text */
+    .profile-info {
+        display: none;
+    }
+
+    .profile-toggle {
+        padding-right: 10px;
+        gap: 6px;
+    }
+}

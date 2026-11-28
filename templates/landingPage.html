@@ -23,18 +23,22 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="{% url 'login' %}" class="btn btn-outline">Log In</a>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle">
-                        Register <span class="caret">▾</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="{% url 'registerCustomer' %}">Register as Customer</a></li>
-                        <li><a href="registerPharmacy.html">Register as Pharmacy</a></li>
-                    </ul>
+            {% if user.is_authenticated %}
+                {% include 'components/nav_user_actions.html' %}
+            {% else %}
+                <div class="nav-actions">
+                    <a href="{% url 'login' %}" class="btn btn-outline">Log In</a>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle">
+                            Register <span class="caret">▾</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'registerCustomer' %}">Register as Customer</a></li>
+                            <li><a href="{% url 'step1' %}">Register as Pharmacy</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Mobile Hamburger -->
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -52,6 +56,25 @@
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li class="mobile-divider"></li>
+            {% if user.is_authenticated %}
+                <li><a href="#">My Profile</a></li>
+                {% if not user.pharmacy %}
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">My Orders</a></li>
+                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="#">Cart</a></li>
+                {% endif %}
+                <li>
+                    <form action="{% url 'logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="mobile-logout">Log Out</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'registerCustomer' %}">Register as Customer</a></li>
+                <li><a href="{% url 'step1' %}">Register as Pharmacy</a></li>
+            {% endif %}
             <li><a href="{% url 'login' %}">Log In</a></li>
             <li><a href="register-customer.html">Register as Customer</a></li>
             <li><a href="register-pharmacy.html">Register as Pharmacy</a></li>
@@ -513,7 +536,7 @@
             <!-- Left Side: Brand & Socials -->
             <div class="footer-brand">
                 <!-- Logo -->
-                <a href="landingPage.html" class="footer-logo-link">
+                <a href="{% url 'home' %}" class="footer-logo-link">
                     <img src="{% static 'images/authentication/logo_pt2.png' %}" alt="MerCare Logo" class="footer-logo">
                 </a>
                 
